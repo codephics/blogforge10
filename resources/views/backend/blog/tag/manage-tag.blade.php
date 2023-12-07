@@ -41,7 +41,7 @@
     @if(session()->has('delete'))
     <div class="row">
         <div class="col-md-12">
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-danger" role="alert">
                 {{ session('delete') }}
             </div>
         </div>
@@ -55,7 +55,6 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Description</th>
                         <th>Slug</th>
                         <th>Action</th>
                     </tr>
@@ -64,11 +63,10 @@
                     @foreach ($tags as $tag)
                     <tr>
                         <td>{{ $tag->name }}</td>
-                        <td>{!! $tag->description !!}</td>
                         <td>{{ $tag->slug }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                              <a href="{{ route('template.blog.tag.edit',$tag->id) }}" class="btn btn-secondary">Edit</a>
+                              <a href="{{ route('blog.tag.edit',$tag->id) }}" class="btn btn-secondary">Edit</a>
 
                               <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#deleteCategories{{ $tag->id }}">Destroy</button>
 
@@ -83,7 +81,7 @@
                                       <div class="modal-body">
                                         <p>Do you really want to delete. This process cannot be undone.</p>
                                       </div>
-                                      <form method="POST" action="{{ route('template.blog.tag.destroy',$tag->id) }}">
+                                      <form method="POST" action="{{ route('blog.tag.destroy',$tag->id) }}">
                                         @csrf
                                         @method('DELETE')
                                       <div class="modal-footer">
@@ -101,9 +99,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Icon</th>
-                        <th>Category Name</th>
-                        <th>Category Slug</th>
+                        <th>Name</th>
+                        <th>Slug</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

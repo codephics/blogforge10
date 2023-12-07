@@ -269,7 +269,7 @@ class BlogCategoryController extends Controller
 
             $category = BlogCategory::findOrFail($id);
             
-            return view('backend.blog.edit-blog-category', ['category' => $category]);
+            return view('backend.blog.category.edit-category', ['category' => $category]);
 
         } elseif ($request->routeIs('blog.subcategory.edit')) {
 
@@ -277,7 +277,7 @@ class BlogCategoryController extends Controller
 
             $subcategory = BlogSubcategory::findOrFail($id);
             
-            return view('backend.blog.edit-blog-subcategory', ['categories' => $categories, 'subcategory' => $subcategory]);
+            return view('backend.blog.category.edit-subcategory', ['categories' => $categories, 'subcategory' => $subcategory]);
 
         } elseif ($request->routeIs('blog.sub-subcategory.edit')) {
 
@@ -285,7 +285,7 @@ class BlogCategoryController extends Controller
 
             $sub_subcategory = BlogSubSubcategory::findOrFail($id);
             
-            return view('backend.blog.edit-blog-sub-subcategory', ['subcategories' => $subcategories, 'sub_subcategory' => $sub_subcategory]);
+            return view('backend.blog.category.edit-sub-subcategory', ['subcategories' => $subcategories, 'sub_subcategory' => $sub_subcategory]);
 
         }
         

@@ -75,13 +75,13 @@
                 <tbody>
                     @foreach ($subcategories as $subcategory)
                     <tr>
-                        <td><img src="{{ asset('template/blog/category/subcategory/icon/' . $subcategory->icon) }}" class="" alt="..." height="42" width="42" /></td>
+                        <td><img src="{{ asset('blog/category/subcategory/icon/' . $subcategory->icon) }}" class="" alt="..." height="42" width="42" /></td>
                         <td>{{ $subcategory->category_name }}</td>
                         <td>{{ $subcategory->subcategory_name }}</td>
                         <td>{{ $subcategory->slug }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                              <a href="{{ route('template.blog.subcategory.edit',$subcategory->id) }}" class="btn btn-secondary">Edit</a>
+                              <a href="{{ route('blog.subcategory.edit',$subcategory->id) }}" class="btn btn-secondary">Edit</a>
 
                               <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#deleteSubcategory{{ $subcategory->id }}">Destroy</button>
 
@@ -96,7 +96,7 @@
                                       <div class="modal-body">
                                         <p>Do you really want to delete. This process cannot be undone.</p>
                                       </div>
-                                      <form method="POST" action="{{ route('template.blog.subcategory.destroy',$subcategory->id) }}">
+                                      <form method="POST" action="{{ route('blog.subcategory.destroy',$subcategory->id) }}">
                                         @csrf
                                         @method('DELETE')
                                       <div class="modal-footer">

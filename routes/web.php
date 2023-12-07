@@ -80,7 +80,7 @@ Route::put('/blog/sub-subcategories/sub-subcategory/update/{id}', [BlogCategoryC
 Route::delete('/blog/sub-subcategories/sub-subcategory/destroy/{id}', [BlogCategoryController::class, 'destroy'])->middleware(['auth', 'verified'])->name('blog.sub-subcategory.destroy');
 
 // Blog -> Tag
-Route::get('/blog/tags', [BlogTagController::class, 'show'])->middleware(['auth', 'verified'])->name('blog.tags');
+Route::get('/blog/tag', [BlogTagController::class, 'show'])->middleware(['auth', 'verified'])->name('blog.tag');
 Route::get('/blog/new-tag', [BlogTagController::class, 'create'])->middleware(['auth', 'verified'])->name('blog.new-tag');
 Route::post('/blog/new-tag/store', [BlogTagController::class, 'store'])->middleware(['auth', 'verified'])->name('blog.new-tag.store');
 Route::get('/blog/edit-tag/{id}', [BlogTagController::class, 'edit'])->middleware(['auth', 'verified'])->name('blog.tag.edit');

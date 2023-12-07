@@ -19,12 +19,10 @@
 						<li><a class="dropdown-item" href="{{ route('blog.categories') }}">Manage Categories</a></li>
 						<li><a class="dropdown-item" href="{{ route('blog.subcategories') }}">Manage Subcategories</a></li>
 						<li><a class="dropdown-item" href="{{ route('blog.sub-subcategories') }}">Manage Sub Subcategories</a></li>
-						<li><a class="dropdown-item" href="{{ route('blog.tags') }}">Manage Tags</a></li>
+						<li><a class="dropdown-item" href="{{ route('blog.tag') }}">Manage Tags</a></li>
 						<li><a class="dropdown-item" href="{{ route('blog.comments') }}">Manage Comments</a></li>
 					</ul>
 				</li>
-				
-				<li class="nav-item"><a href="{{ route('manage-subscriptions') }}" class="nav-link">Subscription</a></li>
 				
 				<li class="nav-item"><a href="{{ route('blog.home') }}" class="nav-link" target="_blank">Visit Site</a></li>
 				<li class="nav-item dropdown">

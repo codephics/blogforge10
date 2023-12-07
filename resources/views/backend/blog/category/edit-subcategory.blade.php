@@ -1,4 +1,4 @@
-@extends('administration.template.skeleton.body')
+@extends('backend.blog.skeleton.body')
 @section('content') @section('custom-head')
 <script src="https://cdn.tiny.cloud/1/m9g2pjluv64jkrzcnksdf4ur6nd9lvyrbatcjua3iazeof63/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
@@ -9,9 +9,9 @@
         <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('template.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('template.blog.categories') }}">Manage Blog Categories</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('template.blog.subcategories') }}">Manage Blog Subcategories</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('blog.categories') }}">Manage Blog Categories</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('blog.subcategories') }}">Manage Blog Subcategories</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edit Blog Categories</li>
                 </ol>
             </nav>
@@ -35,7 +35,7 @@
     </div>
     @endif
 
-    <form class="needs-validation" method="POST" action="{{ route('template.blog.subcategory.update',$subcategory->id) }}" enctype="multipart/form-data" novalidate>
+    <form class="needs-validation" method="POST" action="{{ route('blog.subcategory.update',$subcategory->id) }}" enctype="multipart/form-data" novalidate>
         @csrf
         @method('PUT')
         <div class="row">
@@ -131,7 +131,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('template/blog/category/subcategory/icon/' . $subcategory->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/category/subcategory/icon/' . $subcategory->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="icon_alt_text" value="{{ $subcategory->icon_alt_text }}" placeholder="Alt Text" />
@@ -143,7 +143,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('template/blog/category/subcategory/thumb/' . $subcategory->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/category/subcategory/thumb/' . $subcategory->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="thumb_alt_text" value="{{ $subcategory->thumb_alt_text }}" placeholder="Alt Text" />
@@ -155,7 +155,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('template/blog/category/subcategory/cover/' . $subcategory->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/category/subcategory/cover/' . $subcategory->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="cover_alt_text" value="{{ $subcategory->cover_alt_text }}" placeholder="Alt Text" />
@@ -167,7 +167,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('template/blog/category/subcategory/og/' . $subcategory->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/category/subcategory/og/' . $subcategory->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $subcategory->og_img_alt_text }}" placeholder="Alt Text" />

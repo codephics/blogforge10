@@ -12,8 +12,8 @@
 			<div class="row py-3">
 				<div class="col-8">
 					<details class="mb-3">
-						<summary>2022 © Bootstrap. All Rights Reserved.</summary>
-						<p>All content and graphics on this web site are the property of Bootstrap.</p>
+						<summary>2022 © Codephics. All Rights Reserved.</summary>
+						<p>All content and graphics on this web site are the property of Codephics.</p>
 					</details>
 					<nav class="nav">
 						<a href="https://twitter.com" title="Twitter" target="_blank" rel="nofollow" class="link-dark"><i class="fa-brands fa-twitter ms-2"></i></a>

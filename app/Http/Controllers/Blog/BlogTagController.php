@@ -99,7 +99,7 @@ class BlogTagController extends Controller
     {
         $tags = BlogTag::all();
         
-        return view('backend.blog.tag.manage-tags', ['tags' => $tags]);
+        return view('backend.blog.tag.manage-tag', ['tags' => $tags]);
     }
 
     public function edit($id)

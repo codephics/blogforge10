@@ -18,6 +18,10 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
+    public const BlogCategories = '/blog/categories';
+    public const BlogSubCategories = '/blog/subcategories';
+    public const BlogSubSubCategories = '/blog/sub-subcategories';
+    public const BlogTag = '/blog/tag';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

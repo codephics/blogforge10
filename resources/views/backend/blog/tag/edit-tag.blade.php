@@ -1,4 +1,4 @@
-@extends('administration.template.skeleton.body')
+@extends('backend.blog.skeleton.body')
 @section('content') @section('custom-head')
 <script src="https://cdn.tiny.cloud/1/m9g2pjluv64jkrzcnksdf4ur6nd9lvyrbatcjua3iazeof63/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
@@ -9,8 +9,8 @@
         <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('template.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('template.blog.tags') }}">Manage Blog Tags</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('blog.tag') }}">Manage Tags</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edit Tag</li>
                 </ol>
             </nav>
@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1>Edit Blog Tag</h1>
+            <h1>Edit Tag</h1>
         </div>
     </div>
 
@@ -34,7 +34,7 @@
     </div>
     @endif
 
-    <form class="needs-validation" method="POST" action="{{ route('template.blog.tag.update',$tag->id) }}" enctype="multipart/form-data" novalidate>
+    <form class="needs-validation" method="POST" action="{{ route('blog.tag.update',$tag->id) }}" enctype="multipart/form-data" novalidate>
         @csrf
         @method('PUT')
         <div class="row">
@@ -111,7 +111,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('template/blog/tag/icon/' . $tag->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/tag/icon/' . $tag->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="icon_alt_text" value="{{ $tag->icon_alt_text }}" placeholder="Alt Text" />
@@ -123,7 +123,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('template/blog/tag/thumb/' . $tag->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/tag/thumb/' . $tag->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="thumb_alt_text" value="{{ $tag->thumb_alt_text }}" placeholder="Alt Text" />
@@ -135,7 +135,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('template/blog/tag/cover/' . $tag->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/tag/cover/' . $tag->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="cover_alt_text" value="{{ $tag->cover_alt_text }}" placeholder="Alt Text" />
@@ -147,7 +147,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('template/blog/tag/og/' . $tag->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/tag/og/' . $tag->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $tag->og_img_alt_text }}" placeholder="Alt Text" />

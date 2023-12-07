@@ -10,7 +10,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('blog.tags') }}">Manage Blog Tags</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('blog.tag') }}">Manage Blog Tags</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Add Blog Tag</li>
                 </ol>
             </nav>

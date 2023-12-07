@@ -41,7 +41,7 @@
     @if(session()->has('delete'))
     <div class="row">
         <div class="col-md-12">
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-danger" role="alert">
                 {{ session('delete') }}
             </div>
         </div>
@@ -63,7 +63,7 @@
                 <tbody>
                     @foreach ($categories as $category)
                     <tr>
-                        <td><img src="{{ asset('template/blog/category/icon/' . $category->icon) }}" class="" alt="..." height="42" width="42" /></td>
+                        <td><img src="{{ asset('blog/category/icon/' . $category->icon) }}" class="" alt="..." height="42" width="42" /></td>
                         <td>{{ $category->category_name }}</td>
                         <td>{{ $category->slug }}</td>
                         <td>
