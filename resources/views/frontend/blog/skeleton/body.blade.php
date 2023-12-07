@@ -21,19 +21,19 @@
 		<!-- End Custom Head -->
 
 		<!-- HTML Meta Tags -->
-		@include('frontend.skeleton.meta')
+		@include('frontend.blog.skeleton.meta')
 		<!-- End HTML Meta Tags -->
 		
 
 		<!-- Schema -->
-		@include('frontend.skeleton.schema')
+		@include('frontend.blog.skeleton.schema')
 		<!-- End Schema -->
 
 	</head>
 	<body>
 
 		<!-- Navigation -->
-		@include('frontend.skeleton.navigation')
+		@include('frontend.blog.skeleton.navigation')
 		<!-- End Navigation -->
 
 		<main class="container p-3 py-5">
@@ -63,11 +63,11 @@
 		</main>
 
 		<!-- Footer -->
-		@include('frontend.skeleton.footer')
+		@include('frontend.blog.skeleton.footer')
 		<!-- End Footer -->
 
 		<!-- Scripts -->
-		@include('frontend.skeleton.scripts')
+		@include('frontend.blog.skeleton.scripts')
 
 		<!-- Custom Scripts -->
 		@yield('custom-scripts')

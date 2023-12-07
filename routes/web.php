@@ -23,7 +23,7 @@ use App\Http\Controllers\Blog\SitemapController;
 
 // Blog
 Route::get('/', [BlogController::class, 'index'])->name('blog.home');
-Route::get('/blog-detail/{slug}', [BlogController::class, 'detail'])->name('blog.detail');
+Route::get('/detail/{slug}', [BlogController::class, 'detail'])->name('blog.detail');
 
 // Privacy Policy
 Route::get('/privacy-policy', [PrivacyController::class, 'index'])->name('blog.privacy-policy');

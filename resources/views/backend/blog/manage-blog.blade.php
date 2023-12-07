@@ -66,7 +66,7 @@
                 <tbody>
                     @foreach ($blogs as $blog)
                     <tr>
-                        <td><img src="{{ asset('template/blog/image/featured/' . $blog->featured_image) }}" class="" alt="..." height="42" width="42" /></td>
+                        <td><img src="{{ asset('blog/image/featured/' . $blog->featured_image) }}" class="" alt="..." height="42" width="42" /></td>
                         <td>{{ $blog->title }}</td>
                         <td>{{ $blog->category_name }}</td>
                         <td>{{ $blog->subcategory_name }}</td>
@@ -74,7 +74,7 @@
                         <td>@if($blog->status == 1) Published @else Draft @endif</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                              <a href="{{ route('template.blog.edit',$blog->id) }}" class="btn btn-secondary">Edit</a>
+                              <a href="{{ route('blog.edit',$blog->id) }}" class="btn btn-secondary">Edit</a>
 
                               <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#deleteBlog{{ $blog->id }}">Destroy</button>
 
@@ -89,7 +89,7 @@
                                       <div class="modal-body">
                                         <p>Do you really want to delete. This process cannot be undone.</p>
                                       </div>
-                                      <form method="POST" action="{{ route('template.blog.destroy',$blog->id) }}">
+                                      <form method="POST" action="{{ route('blog.destroy',$blog->id) }}">
                                         @csrf
                                         @method('DELETE')
                                       <div class="modal-footer">

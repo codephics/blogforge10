@@ -18,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
+    public const Blog = '/blog/manage-blog';
     public const BlogCategories = '/blog/categories';
     public const BlogSubCategories = '/blog/subcategories';
     public const BlogSubSubCategories = '/blog/sub-subcategories';

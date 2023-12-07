@@ -19,7 +19,13 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('frontend.welcome');
+        $featuredBlogs = Blog::where('is_featured', 1)->take(1)->get();
+        $allBlogs = Blog::take(36)->get();
+
+        return view('frontend.blog.welcome', [
+            'featuredBlogs' => $featuredBlogs,
+            'allBlogs' => $allBlogs
+        ]);
     }
 
     public function create(Request $request)
@@ -53,8 +59,6 @@ class BlogController extends Controller
             'category_name' => $request->category_name,
             'subcategory_name' => $request->subcategory_name,
             'sub_subcategory_name' => $request->sub_subcategory_name,
-            'template' => $request->template,
-            'seller_name' => $request->seller_name,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'youtube_iframe' => $request->youtube_iframe,
@@ -70,19 +74,19 @@ class BlogController extends Controller
 
         if ($request->hasFile('featured_image')) {
             $featuredImage = $request->file('featured_image')->getClientOriginalName();
-            $request->file('featured_image')->move(public_path('template/template/blog/image/featured'), $featuredImage);
+            $request->file('featured_image')->move(public_path('blog/image/featured'), $featuredImage);
             $blog->featured_image = $featuredImage;
         }
 
         if ($request->hasFile('file')) {
             $file = $request->file('file')->getClientOriginalName();
-            $request->file('file')->move(public_path('template/template/blog/file'), $file);
+            $request->file('file')->move(public_path('blog/file'), $file);
             $blog->file = $file;
         }
 
         if ($request->hasFile('og_image')) {
             $oGImage = $request->file('og_image')->getClientOriginalName();
-            $request->file('og_image')->move(public_path('template/template/blog/image/og'), $oGImage);
+            $request->file('og_image')->move(public_path('blog/image/og'), $oGImage);
             $blog->og_image = $oGImage;
         }
 
@@ -96,7 +100,7 @@ class BlogController extends Controller
     }
 
     public function show(Request $request)
-    {            
+    {
         $blogs = Blog::all();
         
         return view('backend.blog.manage-blog', ['blogs' => $blogs]);
@@ -104,11 +108,11 @@ class BlogController extends Controller
 
     public function detail($slug)
     {
-        $page = Blog::where('slug', $slug)->firstOrFail();
+        $blog = Blog::where('slug', $slug)->firstOrFail();
         $relatedBlog = Blog::take(4)->get();
 
-        return view('frontend.blog.home-detail', [
-            'page' => $page,
+        return view('frontend.blog.detail', [
+            'blog,' => $blog,
             'relatedBlog' => $relatedBlog
         ]);
     }
@@ -116,17 +120,12 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = Blog::findOrFail($id);
-
-        $templates = Template::all();
-        $sellers = TemplateSeller::all();
-        $categories = TemplateCategory::all();
-        $subcategories = TemplateSubcategory::all();
-        $sub_subcategories = TemplateSubSubcategory::all();
+        $categories = BlogCategory::all();
+        $subcategories = BlogSubcategory::all();
+        $sub_subcategories = BlogSubSubcategory::all();
         
-        return view('backend.blog.home.edit-blog', [
+        return view('backend.blog.edit-blog', [
             'blog' => $blog,
-            'sellers' => $sellers,
-            'templates' => $templates,
             'categories' => $categories,
             'subcategories' => $subcategories,
             'sub_subcategories' => $sub_subcategories,
@@ -146,7 +145,7 @@ class BlogController extends Controller
                 ]);
 
                 $featuredImageName = $request->featured_image->getClientOriginalName();
-                $request->featured_image->move(public_path('template/blog/image/featured'), $featuredImageName);
+                $request->featured_image->move(public_path('blog/image/featured'), $featuredImageName);
 
                 $blog->featured_image = $featuredImageName;
             }
@@ -159,7 +158,7 @@ class BlogController extends Controller
                 ]);
 
                 $Name = $request->file->getClientOriginalName();
-                $request->file->move(public_path('template/blog/file'), $Name);
+                $request->file->move(public_path('blog/file'), $Name);
 
                 $blog->file = $Name;
             }
@@ -172,7 +171,7 @@ class BlogController extends Controller
                 ]);
 
                 $ogImageName = $request->og_image->getClientOriginalName();
-                $request->og_image->move(public_path('template/blog/image/og'), $ogImageName);
+                $request->og_image->move(public_path('blog/image/og'), $ogImageName);
 
                 $blog->og_image = $ogImageName;
             }
@@ -185,8 +184,6 @@ class BlogController extends Controller
             $blog->category_name = $request->input('category_name');
             $blog->subcategory_name = $request->input('subcategory_name');
             $blog->sub_subcategory_name = $request->input('sub_subcategory_name');
-            $blog->template = $request->input('template');
-            $blog->seller_name = $request->input('seller_name');
             $blog->short_description = $request->input('short_description');
             $blog->long_description = $request->input('long_description');
             $blog->youtube_iframe = $request->input('youtube_iframe');

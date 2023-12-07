@@ -27,8 +27,6 @@
         @include('backend.blog.profile.partials.update-profile-information-form')
 
         @include('backend.blog.profile.partials.update-password-form')
-
-        <!-- @include('backend.blog.profile.partials.delete-user-form') -->
     </div>
 </main>
 

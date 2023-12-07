@@ -1,4 +1,4 @@
-@extends('administration.template.skeleton.body')
+@extends('backend.blog.skeleton.body')
 @section('content') @section('custom-head')
 <script src="https://cdn.tiny.cloud/1/m9g2pjluv64jkrzcnksdf4ur6nd9lvyrbatcjua3iazeof63/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
@@ -9,8 +9,8 @@
         <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('template.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('template.blog.manage-blog') }}">Manage Blog</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('blog.manage-blog') }}">Manage Blog</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edit Blog</li>
                 </ol>
             </nav>
@@ -34,7 +34,7 @@
     </div>
     @endif
 
-    <form class="needs-validation" method="POST" action="{{ route('template.blog.update', $blog->id) }}" enctype="multipart/form-data" novalidate>
+    <form class="needs-validation" method="POST" action="{{ route('blog.update', $blog->id) }}" enctype="multipart/form-data" novalidate>
         @csrf
         @method('PUT')
         <div class="row">
@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title *</label>
+                            <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" name="title" value="{{ $blog->title }}" placeholder="Title" required />
                             <div class="valid-feedback">
                                 Looks good!
@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="tags" class="form-label">Tags *</label>
+                            <label for="tags" class="form-label">Tags</label>
                             <input type="text" class="form-control" name="tags" value="{{ $blog->tags }}" placeholder="Tags" />
                             <div class="valid-feedback">
                                 Looks good!
@@ -103,30 +103,6 @@
                             <datalist id="datalistSubSubcategory">
                                 @foreach($sub_subcategories as $sub_subcategory)
                                 <option value="{{ $sub_subcategory->sub_subcategory_name }}"></option>
-                                @endforeach
-                            </datalist>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="template" class="form-label">Template</label>
-                            <input class="form-control" list="datalistTemplate" name="template" value="{{ $blog->template }}" placeholder="{{ $blog->template }}" />
-                            <datalist id="datalistTemplate">
-                                @foreach($templates as $template)
-                                <option value="{{ $template->name }}"></option>
-                                @endforeach
-                            </datalist>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="author" class="form-label">Seller</label>
-                            <input class="form-control" list="datalistAuthor" name="seller_name" value="{{ $blog->seller_name }}" placeholder="{{ $blog->seller_name }}" required />
-                            <datalist id="datalistAuthor">
-                                @foreach($sellers as $seller)
-                                <option value="{{ $seller->name }}"></option>
                                 @endforeach
                             </datalist>
                         </div>
