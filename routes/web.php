@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\Blog\BlogCategoryController;
 use App\Http\Controllers\Blog\BlogTagController;
-use App\Http\Controllers\Blog\PageController;
-use App\Http\Controllers\Blog\SubscriptionController;
+use App\Http\Controllers\Blog\BlogPageController;
 use App\Http\Controllers\Blog\SitemapController;
 /*
 |--------------------------------------------------------------------------
@@ -23,18 +22,19 @@ use App\Http\Controllers\Blog\SitemapController;
 
 // Blog
 Route::get('/', [BlogController::class, 'index'])->name('blog.home');
+Route::get('/more-blogs', [BlogController::class, 'blogs'])->name('blog.more');
 Route::get('/detail/{slug}', [BlogController::class, 'detail'])->name('blog.detail');
 
 // Privacy Policy
-Route::get('/privacy-policy', [PrivacyController::class, 'index'])->name('blog.privacy-policy');
+Route::get('/privacy-policy', [BlogPageController::class, 'privacy'])->name('blog.privacy-policy');
 
 // Terms of Service
-Route::get('/terms-of-service', [TermController::class, 'index'])->name('blog.terms-of-service');
+Route::get('/terms-of-service', [BlogPageController::class, 'terms'])->name('blog.terms-of-service');
 
-Route::get('/license', [AboutController::class, 'license'])->name('blog.license');
+Route::get('/license', [BlogPageController::class, 'license'])->name('blog.license');
 
 // 404
-Route::get('/404', [PageController::class, 'error404'])->name('blog.404');
+Route::get('/404', [BlogPageController::class, 'error404'])->name('blog.404');
 
 // Sitemap
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('blog.sitemap');
@@ -90,12 +90,12 @@ Route::delete('/blog/destroy-tag/{id}', [BlogTagController::class, 'destroy'])->
 // Blog -> Comments
 Route::get('/blog/comments', [BlogTagController::class, 'show'])->middleware(['auth', 'verified'])->name('blog.comments');
 
-// Subscription
-Route::get('/manage-subscriptions', [SubscriptionController::class, 'show'])->middleware(['auth', 'verified'])->name('manage-subscriptions');
-Route::get('/manage-subscriptions/new-subscription', [SubscriptionController::class, 'create'])->middleware(['auth', 'verified'])->name('new-subscription');
-Route::post('/manage-subscriptions/new-subscription/store', [SubscriptionController::class, 'store'])->middleware(['auth', 'verified'])->name('new-subscription.store');
-Route::get('/manage-subscriptions/edit/{id}', [SubscriptionController::class, 'edit'])->middleware(['auth', 'verified'])->name('subscription.edit');
-Route::put('/manage-subscriptions/update/{id}', [SubscriptionController::class, 'update'])->middleware(['auth', 'verified'])->name('subscription.update');
-Route::delete('/manage-subscriptions/destroy/{id}', [SubscriptionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('subscription.destroy');
+// Pages
+Route::get('blog/manage-pages', [BlogPageController::class, 'show'])->middleware(['auth', 'verified'])->name('blog.page.manage-pages');
+Route::get('blog/manage-pages/new-page', [BlogPageController::class, 'create'])->middleware(['auth', 'verified'])->name('blog.page.new-page');
+Route::post('blog/manage-pages/new-page/store', [BlogPageController::class, 'store'])->middleware(['auth', 'verified'])->name('blog.page.new-page.store');
+Route::get('blog/manage-pages/edit/{id}', [BlogPageController::class, 'edit'])->middleware(['auth', 'verified'])->name('blog.page.edit');
+Route::put('blog/manage-pages/update/{id}', [BlogPageController::class, 'update'])->middleware(['auth', 'verified'])->name('blog.page.update');
+Route::delete('blog/manage-pages/destroy/{id}', [BlogPageController::class, 'destroy'])->middleware(['auth', 'verified'])->name('blog.page.destroy');
 
 require __DIR__.'/auth.php';

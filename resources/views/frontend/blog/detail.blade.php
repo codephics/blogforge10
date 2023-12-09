@@ -39,12 +39,12 @@
 						<div class="p-4 mb-3 bg-light rounded">
 							<h5>About</h5>
 							<p>
-								{!! $blog_short_des->short_description !!}
-								<a href="{{ route('store') }}">Download Now!</a>
+								{!! $blog->short_description !!}
+								<a href="{{ route('blog.home') }}">Download Now!</a>
 							</p>
 						</div>
 
-						<!-- <div class="p-4">
+						<div class="p-4">
 							<h5>Archives</h5>
 							<ol class="list-unstyled mb-0">
 								<li><a href="#">March 2021</a></li>
@@ -60,7 +60,7 @@
 								<li><a href="#">May 2020</a></li>
 								<li><a href="#">April 2020</a></li>
 							</ol>
-						</div> -->
+						</div>
 
 						<div class="p-4">
 							<h5>Elsewhere</h5>
@@ -94,7 +94,7 @@
 				<div class="col-lg-2 align-self-center">
 					<div class="row">
 						<div class="col-12 col-sm-12">
-							<a type="button" class="btn btn-outline-secondary float-end" href="{{ route('blog') }}">Read Blogs</a>
+							<a type="button" class="btn btn-outline-secondary float-end" href="{{ route('blog.home') }}">Read Blogs</a>
 						</div>
 					</div>
 				</div>
@@ -139,15 +139,5 @@
 			</div>
 		</section>
 		<!-- End Related Blogs -->
-
-		<!-- Questions or Suggestions -->
-		<section>
-			<div class="row">
-				<div class="col-12">
-					<p class="text-center">Have questions or suggestions? <a href="{{ route('template.contact-us') }}">Contact Us</a></p>
-				</div>
-			</div>
-		</section>
-		<!-- End Questions or Suggestions -->
 	
 	@endsection

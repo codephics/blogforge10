@@ -28,6 +28,15 @@ class BlogController extends Controller
         ]);
     }
 
+    public function blogs()
+    {
+        $blogs = Blog::all();
+
+        return view('frontend.blog.more', [
+            'blogs' => $blogs
+        ]);
+    }
+
     public function create(Request $request)
     {
         $categories = BlogCategory::all();
@@ -112,7 +121,7 @@ class BlogController extends Controller
         $relatedBlog = Blog::take(4)->get();
 
         return view('frontend.blog.detail', [
-            'blog,' => $blog,
+            'blog' => $blog,
             'relatedBlog' => $relatedBlog
         ]);
     }

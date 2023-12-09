@@ -22,8 +22,9 @@
 						<li><a class="dropdown-item" href="{{ route('blog.tag') }}">Manage Tags</a></li>
 						<li><a class="dropdown-item" href="{{ route('blog.comments') }}">Manage Comments</a></li>
 					</ul>
-				</li>
-				
+				</li>				
+				<li class="nav-item"><a href="{{ route('blog.page.manage-pages') }}" class="nav-link">Pages</a></li>
+				<li class="nav-item"><a href="{{ route('blog.home') }}" class="nav-link">Settings</a></li>
 				<li class="nav-item"><a href="{{ route('blog.home') }}" class="nav-link" target="_blank">Visit Site</a></li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

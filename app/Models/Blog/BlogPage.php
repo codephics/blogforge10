@@ -5,7 +5,7 @@ namespace App\Models\Blog;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class BlogPage extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,10 @@ class Blog extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'title',
         'slug',
         'tags',
-        'header_title',
         'category_name',
         'subcategory_name',
         'sub_subcategory_name',
@@ -28,10 +28,18 @@ class Blog extends Model
         'header_content',
         'meta_title',
         'meta_description',
-        'is_featured',
-        'featured_image',
-        'file',
+        'facebook_meta_title',
+        'facebook_meta_description',
+        'twitter_meta_title',
+        'twitter_meta_description',
+        'thumb',
+        'thumb_alt_text',
+        'breadcrumb_image',
+        'breadcrumb_alt_text',
+        'cover_image',
+        'cover_alt_text',
         'og_image',
+        'og_img_alt_text',
         'status',
         'comment',
     ];

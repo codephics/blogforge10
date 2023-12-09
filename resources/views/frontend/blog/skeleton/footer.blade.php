@@ -3,10 +3,9 @@
 			<div class="row py-3 border border-start-0 border-top border-end-0">
 				<div class="col-12">
 					<nav class="nav">
-						<a class="nav-link" href="#">Privacy Policy</a>
-						<a class="nav-link" href="#">Terms of Service</a>
-						<a class="nav-link" href="#">Licenses</a>
-						<a class="nav-link" href="#">Contact Us</a>
+						<a class="nav-link" href="{{ route('blog.privacy-policy') }}">Privacy Policy</a>
+						<a class="nav-link" href="{{ route('blog.terms-of-service') }}">Terms of Service</a>
+						<a class="nav-link" href="{{ route('blog.license') }}">Licenses</a>
 					</nav>
 				</div>
 			</div>

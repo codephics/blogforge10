@@ -60,8 +60,8 @@
                 <h1 class="fw-light">{{ \Illuminate\Support\Str::limit($blog->title, 100, '...') }}</h1>
                 <p class="lead text-muted">{!! $blog->short_description !!}</p>
                 <p>
-                    <a href="{{ route('blog.detail',$blog->slug) }}" class="btn btn-primary my-2">Read More!</a>
-                    <a href="{{ route('blog.detail',$blog->slug) }}" class="btn btn-secondary my-2">Read All!</a>
+                    <a href="{{ route('blog.detail',$blog->slug) }}" class="btn btn-primary my-2">Read More</a>
+                    <a href="{{ route('blog.more') }}" class="btn btn-secondary my-2">More Blogs</a>
                 </p>
             </div>
         </div>
