@@ -20,7 +20,7 @@
 			<div class="row">
 				<div class="col-md-9">
 					<div class="album py-5">
-			            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+			            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
 			                @foreach($blogs as $blog)
 			                <div class="col">
 			                    <div class="card shadow-sm">

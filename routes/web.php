@@ -8,6 +8,7 @@ use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\Blog\BlogCategoryController;
 use App\Http\Controllers\Blog\BlogTagController;
 use App\Http\Controllers\Blog\BlogPageController;
+use App\Http\Controllers\Blog\BlogSettingController;
 use App\Http\Controllers\Blog\SitemapController;
 /*
 |--------------------------------------------------------------------------
@@ -43,10 +44,18 @@ Route::get('/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Blog -> Profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Blog -> Settings
+Route::middleware('auth')->group(function () {
+    Route::get('/blog/settings', [BlogSettingController::class, 'edit'])->name('blog.setting.edit');
+    Route::patch('/blog/settings', [BlogSettingController::class, 'update'])->name('blog.setting.update');
+    Route::delete('/blog/settings', [BlogSettingController::class, 'destroy'])->name('blog.setting.destroy');
 });
 
 // Blog -> Manage Blog
