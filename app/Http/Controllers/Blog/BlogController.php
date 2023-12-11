@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\Controller;
 
 use App\Models\Blog\Blog;
-use App\Models\Blog\BlogPage;
+use App\Models\Blog\BlogSetting;
 use App\Models\Blog\BlogCategory;
 use App\Models\Blog\BlogSubcategory;
 use App\Models\Blog\BlogSubSubcategory;
@@ -19,10 +19,12 @@ class BlogController extends Controller
 {
     public function index()
     {
+        $page = BlogSetting::first();
         $featuredBlogs = Blog::where('is_featured', 1)->take(1)->get();
         $allBlogs = Blog::take(36)->get();
 
         return view('frontend.blog.welcome', [
+            'page' => $page,
             'featuredBlogs' => $featuredBlogs,
             'allBlogs' => $allBlogs
         ]);
@@ -30,9 +32,11 @@ class BlogController extends Controller
 
     public function blogs()
     {
+        $page = BlogSetting::first();
         $blogs = Blog::all();
 
         return view('frontend.blog.more', [
+            'page' => $page,
             'blogs' => $blogs
         ]);
     }
@@ -117,11 +121,11 @@ class BlogController extends Controller
 
     public function detail($slug)
     {
-        $blog = Blog::where('slug', $slug)->firstOrFail();
+        $page = Blog::where('slug', $slug)->firstOrFail();
         $relatedBlog = Blog::take(4)->get();
 
         return view('frontend.blog.detail', [
-            'blog' => $blog,
+            'page' => $page,
             'relatedBlog' => $relatedBlog
         ]);
     }

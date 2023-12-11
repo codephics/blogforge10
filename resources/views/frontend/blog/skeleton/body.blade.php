@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/js/fontawesome-6.4.0.js') }}">
 
-		<title>page->meta_title</title>
+		<title>{{ $page->meta_title }}</title>
 
 		<link rel="apple-touch-icon" sizes="180x180" href="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon-32x32.png" />
@@ -21,7 +21,7 @@
 		<!-- End Custom Head -->
 
 		<!-- HTML Meta Tags -->
-		@include('frontend.blog.skeleton.meta')
+		@include('frontend.blog.skeleton.meta', ['page' => $page])
 		<!-- End HTML Meta Tags -->
 		
 

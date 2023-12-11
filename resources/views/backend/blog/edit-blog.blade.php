@@ -190,10 +190,11 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                    <div class="mb-3">
-                        <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault" @if($blog->is_featured == 1) checked @endif>
-                              <label class="form-check-label" for="featuredCheckDefault">Featured?</label>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault" @if($blog->is_featured == 1) checked @endif>
+                                  <label class="form-check-label" for="featuredCheckDefault">Featured?</label>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">

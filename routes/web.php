@@ -51,13 +51,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Blog -> Settings
-Route::middleware('auth')->group(function () {
-    Route::get('/blog/settings', [BlogSettingController::class, 'edit'])->name('blog.setting.edit');
-    Route::patch('/blog/settings', [BlogSettingController::class, 'update'])->name('blog.setting.update');
-    Route::delete('/blog/settings', [BlogSettingController::class, 'destroy'])->name('blog.setting.destroy');
-});
-
 // Blog -> Manage Blog
 Route::get('/blog/manage-blog', [BlogController::class, 'show'])->middleware(['auth', 'verified'])->name('blog.manage-blog');
 Route::get('/blog/new-blog', [BlogController::class, 'create'])->middleware(['auth', 'verified'])->name('blog.new-blog');
@@ -106,5 +99,12 @@ Route::post('blog/manage-pages/new-page/store', [BlogPageController::class, 'sto
 Route::get('blog/manage-pages/edit/{id}', [BlogPageController::class, 'edit'])->middleware(['auth', 'verified'])->name('blog.page.edit');
 Route::put('blog/manage-pages/update/{id}', [BlogPageController::class, 'update'])->middleware(['auth', 'verified'])->name('blog.page.update');
 Route::delete('blog/manage-pages/destroy/{id}', [BlogPageController::class, 'destroy'])->middleware(['auth', 'verified'])->name('blog.page.destroy');
+
+// Blog -> Settings
+Route::middleware('auth')->group(function () {
+    Route::post('/blog/settings/store', [BlogSettingController::class, 'store'])->name('blog.setting.store');
+    Route::get('/blog/settings', [BlogSettingController::class, 'edit'])->name('blog.setting.edit');
+    Route::put('/blog/settings', [BlogSettingController::class, 'update'])->name('blog.setting.update');
+});
 
 require __DIR__.'/auth.php';
