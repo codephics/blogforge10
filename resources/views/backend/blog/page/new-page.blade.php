@@ -59,7 +59,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="slug" class="form-label">Slug</label>
-                            <input type="text" class="form-control" name="slug" placeholder="Slug" />
+                            <input type="text" class="form-control" name="slug" placeholder="Slug" required />
                         </div>
                     </div>
                     <div class="col-sm-6">

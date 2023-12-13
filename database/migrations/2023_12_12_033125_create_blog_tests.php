@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blog_pages', function (Blueprint $table) {
+        Schema::create('blog_tests', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->string('name', 100)->default('default-og.png');
             $table->string('title', 100);
-            $table->string('slug', 100);
+            $table->string('slug', 100)->default('default-og.png');
             $table->string('tags', 255)->nullable();
             $table->string('category_name', 100)->nullable();
             $table->string('subcategory_name', 100)->nullable();
@@ -43,12 +43,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::table('blog_pages')->insert([
-            [
-                'name' => 'Homepage',
-                'title' => '',
-                'slug' => 'homepage',
-            ],
+        DB::table('blog_tests')->insert([
             [
                 'name' => 'Privacy Policy',
                 'title' => '',
@@ -65,9 +60,9 @@ return new class extends Migration
                 'slug' => 'license',
             ],
             [
-                'name' => 'About Us',
+                'name' => 'Contact Us',
                 'title' => '',
-                'slug' => 'about-us',
+                'slug' => 'contact-us',
             ],
         ]);
     }
@@ -77,6 +72,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blog_pages');
+        Schema::dropIfExists('blog_tests');
     }
 };

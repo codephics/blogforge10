@@ -18,7 +18,7 @@
 		<!-- Content -->
 		<section>
 			<div class="row g-5">
-				<div class="col-md-8">
+				<div class="col-md-12">
 					<h1>{{ \Illuminate\Support\Str::limit($page->title, 100, '...') }}</h1>
 
 					<img src="{{ asset('blog/image/featured/' . $page->featured_image) }}" alt="" class="img-fluid mt-3" />
@@ -27,52 +27,6 @@
 						<p class="blog-post-meta mt-3">{{ $page->created_at }} <a href="#">{{ $page->author }}</a></p>
 						{!! $page->long_description !!}
 					</article>
-
-					<!-- <nav class="blog-pagination" aria-label="Pagination">
-						<a class="btn btn-outline-primary" href="javascript:prevPage()" id="btn_prev">Older</a>
-						<a class="btn btn-outline-secondary" href="javascript:nextPage()" id="btn_next">Newer</a>
-					</nav> -->
-				</div>
-
-				<div class="col-md-4">
-					<div class="position-sticky" style="top: 2rem;">
-						<div class="p-4 mb-3 bg-light rounded">
-							<h5>About</h5>
-							<p>
-								{!! $page->short_description !!}
-								<a href="{{ route('blog.home') }}">Download Now!</a>
-							</p>
-						</div>
-
-						<div class="p-4">
-							<h5>Archives</h5>
-							<ol class="list-unstyled mb-0">
-								<li><a href="#">March 2021</a></li>
-								<li><a href="#">February 2021</a></li>
-								<li><a href="#">January 2021</a></li>
-								<li><a href="#">December 2020</a></li>
-								<li><a href="#">November 2020</a></li>
-								<li><a href="#">October 2020</a></li>
-								<li><a href="#">September 2020</a></li>
-								<li><a href="#">August 2020</a></li>
-								<li><a href="#">July 2020</a></li>
-								<li><a href="#">June 2020</a></li>
-								<li><a href="#">May 2020</a></li>
-								<li><a href="#">April 2020</a></li>
-							</ol>
-						</div>
-
-						<div class="p-4">
-							<h5>Elsewhere</h5>
-							<ol class="list-unstyled">
-								<li><a href="https://github.com/codephics">GitHub</a></li>
-								<li><a href="https://twitter.com/codephics">Twitter</a></li>
-								<li><a href="https://facebook.com/codephics">Facebook</a></li>
-								<li><a href="https://instagram.com/codephics">Instagram</a></li>
-								<li><a href="https://stackoverflow.com/users/22997964/codephics">Stackoverflow</a></li>
-							</ol>
-						</div>
-					</div>
 				</div>
 			</div>
 		</section>

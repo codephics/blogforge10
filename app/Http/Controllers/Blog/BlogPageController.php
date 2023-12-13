@@ -8,7 +8,9 @@ use App\Models\Blog\BlogCategory;
 use App\Models\Blog\BlogSubcategory;
 use App\Models\Blog\BlogSubSubcategory;
 
+use App\Models\Blog\Blog;
 use App\Models\Blog\BlogPage;
+use App\Models\Blog\BlogSetting;
 
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -19,10 +21,45 @@ class BlogPageController extends Controller
 {
     public function index($slug)
     {
-        $pages = BlogPage::all();
+        $page = BlogPage::all();
         $pageContent = BlogPage::where('slug', $slug)->firstOrFail();
 
-        return view('frontend.blog.skeleton.body', ['pages' => $pages, 'pageContent' => $pageContent]);
+        return view('frontend.blog.skeleton.body', ['page' => $page, 'pageContent' => $pageContent]);
+    }
+    
+    public function homepage()
+    {
+        $page = BlogPage::where('slug', 'homepage')->firstOrFail();
+        $blogs = Blog::take(36)->get();
+
+        return view('frontend.blog.homepage', [
+            'page' => $page,
+            'blogs' => $blogs
+        ]);
+    }
+
+    public function blogs()
+    {
+        $page = BlogSetting::first();
+        $blogs = Blog::all();
+
+        return view('frontend.blog.more', [
+            'page' => $page,
+            'blogs' => $blogs
+        ]);
+    }
+
+    public function detail($slug)
+    {
+        $page = Blog::where('slug', $slug)->firstOrFail();
+        $setting = BlogSetting::first();
+        $relatedBlog = Blog::take(4)->get();
+
+        return view('frontend.blog.detail', [
+            'page' => $page,
+            'setting' => $setting,
+            'relatedBlog' => $relatedBlog
+        ]);
     }
     
     public function privacy()
@@ -243,7 +280,6 @@ class BlogPageController extends Controller
             
             $page->comment = $request->input('comment');
 
-            // Save the changes
             $page->save();
 
             // Perform any additional actions or redirect as needed

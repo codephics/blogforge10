@@ -19,26 +19,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $page = BlogSetting::first();
-        $featuredBlogs = Blog::where('is_featured', 1)->take(1)->get();
-        $allBlogs = Blog::take(36)->get();
-
-        return view('frontend.blog.welcome', [
-            'page' => $page,
-            'featuredBlogs' => $featuredBlogs,
-            'allBlogs' => $allBlogs
-        ]);
-    }
-
-    public function blogs()
-    {
-        $page = BlogSetting::first();
-        $blogs = Blog::all();
-
-        return view('frontend.blog.more', [
-            'page' => $page,
-            'blogs' => $blogs
-        ]);
+        return back();
     }
 
     public function create(Request $request)
@@ -117,17 +98,6 @@ class BlogController extends Controller
         $blogs = Blog::all();
         
         return view('backend.blog.manage-blog', ['blogs' => $blogs]);
-    }
-
-    public function detail($slug)
-    {
-        $page = Blog::where('slug', $slug)->firstOrFail();
-        $relatedBlog = Blog::take(4)->get();
-
-        return view('frontend.blog.detail', [
-            'page' => $page,
-            'relatedBlog' => $relatedBlog
-        ]);
     }
 
     public function edit($id)

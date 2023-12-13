@@ -60,7 +60,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="slug" class="form-label">Slug</label>
-                            <input type="text" class="form-control" name="slug" value="{{ $page->slug }}" placeholder="Slug" disabled />
+                            <input type="text" class="form-control" name="slug" value="{{ $page->slug }}" placeholder="Slug" />
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -155,13 +155,13 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="facebook_meta_title" class="form-label">Meta Title</label>
+                            <label for="facebook_meta_title" class="form-label">Facebook Meta Title</label>
                             <textarea class="form-control" id="facebook_meta_title" rows="3" name="facebook_meta_title">{{ $page->facebook_meta_title }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="facebook_meta_description" class="form-label">Meta Description</label>
+                            <label for="facebook_meta_description" class="form-label">Facebook Meta Description</label>
                             <textarea class="form-control" id="facebook_meta_description" rows="3" name="facebook_meta_description">{{ $page->facebook_meta_description }}</textarea>
                         </div>
                     </div>
@@ -169,13 +169,13 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="twitter_meta_title" class="form-label">Meta Title</label>
+                            <label for="twitter_meta_title" class="form-label">Twitter Meta Title</label>
                             <textarea class="form-control" id="twitter_meta_title" rows="3" name="twitter_meta_title">{{ $page->twitter_meta_title }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="twitter_meta_description" class="form-label">Meta Description</label>
+                            <label for="twitter_meta_description" class="form-label">Twitter Meta Description</label>
                             <textarea class="form-control" id="twitter_meta_description" rows="3" name="twitter_meta_description">{{ $page->twitter_meta_description }}</textarea>
                         </div>
                     </div>

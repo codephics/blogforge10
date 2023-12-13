@@ -57,6 +57,133 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <label for="about_in_short" class="form-label">About in Short</label>
+                            <textarea id="custom-textarea" name="about_in_short">{{ $page->about_in_short }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="facebook_url" class="form-label">Facebook</label>
+                            <input type="text" class="form-control" name="facebook_url" value="{{ $page->facebook_url }}" placeholder="LinkedIn" />
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="twitter_url" class="form-label">Twitter</label>
+                            <input type="text" class="form-control" name="twitter_url" value="{{ $page->twitter_url }}" placeholder="Twitter" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="instagram_url" class="form-label">Instagram</label>
+                            <input type="text" class="form-control" name="instagram_url" value="{{ $page->instagram_url }}" placeholder="Facebook" />
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="linkedIn_url" class="form-label">LinkedIn</label>
+                            <input type="text" class="form-control" name="linkedIn_url" value="{{ $page->linkedIn_url }}" placeholder="Pinterest" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="pinterest_url" class="form-label">Pinterest</label>
+                            <input type="text" class="form-control" name="pinterest_url" value="{{ $page->pinterest_url }}" placeholder="Instagram" />
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="reddit_url" class="form-label">Reddit</label>
+                            <input type="text" class="form-control" name="reddit_url" value="{{ $page->reddit_url }}" placeholder="Reddit" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="tiktok_url" class="form-label">TikTok</label>
+                            <input type="text" class="form-control" name="tiktok_url" value="{{ $page->tiktok_url }}" placeholder="TikTok" />
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="whatsapp_url" class="form-label">WhatsApp</label>
+                            <input type="text" class="form-control" name="whatsapp_url" value="{{ $page->whatsapp_url }}" placeholder="WhatsApp" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="youtube_url" class="form-label">YouTube</label>
+                            <input type="text" class="form-control" name="youtube_url" value="{{ $page->youtube_url }}" placeholder="YouTube" />
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="quora_url" class="form-label">Quora</label>
+                            <input type="text" class="form-control" name="quora_url" value="{{ $page->quora_url }}" placeholder="Quora" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="snapchat_url" class="form-label">Snapchat</label>
+                            <input type="text" class="form-control" name="snapchat_url" value="{{ $page->snapchat_url }}" placeholder="Snapchat" />
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="telegram_url" class="form-label">Telegram</label>
+                            <input type="text" class="form-control" name="telegram_url" value="{{ $page->telegram_url }}" placeholder="Telegram" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="tumblr_url" class="form-label">Tumblr</label>
+                            <input type="text" class="form-control" name="tumblr_url" value="{{ $page->tumblr_url }}" placeholder="Tumblr" />
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="wechat_url" class="form-label">WeChat</label>
+                            <input type="text" class="form-control" name="wechat_url" value="{{ $page->wechat_url }}" placeholder="WeChat" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="youtube_iframe" class="form-label">Youtube Iframe</label>

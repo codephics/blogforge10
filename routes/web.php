@@ -22,9 +22,9 @@ use App\Http\Controllers\Blog\SitemapController;
 */
 
 // Blog
-Route::get('/', [BlogController::class, 'index'])->name('blog.home');
-Route::get('/more-blogs', [BlogController::class, 'blogs'])->name('blog.more');
-Route::get('/detail/{slug}', [BlogController::class, 'detail'])->name('blog.detail');
+Route::get('/', [BlogPageController::class, 'homepage'])->name('blog.home');
+Route::get('/more-blogs', [BlogPageController::class, 'blogs'])->name('blog.more');
+Route::get('/detail/{slug}', [BlogPageController::class, 'detail'])->name('blog.detail');
 
 // Privacy Policy
 Route::get('/privacy-policy', [BlogPageController::class, 'privacy'])->name('blog.privacy-policy');

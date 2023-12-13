@@ -33,7 +33,7 @@
 	<body>
 
 		<!-- Navigation -->
-		@include('frontend.blog.skeleton.navigation')
+		@include('frontend.blog.skeleton.navigation', ['page' => $page])
 		<!-- End Navigation -->
 
 		<main class="container p-3 py-5">

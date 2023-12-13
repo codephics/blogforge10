@@ -4,17 +4,58 @@
 			    <div class="container">
 				    <div class="row">
 					    <div class="col-sm-8 col-md-7 py-4">
-						    <h4 class="text-white">About</h4>
-						    <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+						    <h4 class="text-white">{{ $page->tagline }}</h4>
+						    <div class="text-muted">{!! $page->about_in_short !!}</div>
 					    </div>
+						@if ($page)
 					    <div class="col-sm-4 offset-md-1 py-4">
-						    <h4 class="text-white">Contact</h4>
+						    <h4 class="text-white">Like or Follow</h4>
 						    <ul class="list-unstyled">
-							    <li><a href="#" class="text-white">Follow on Twitter</a></li>
-							    <li><a href="#" class="text-white">Like on Facebook</a></li>
-							    <li><a href="#" class="text-white">Email me</a></li>
+						    	@if ($page->facebook_url)
+							    <li><a href="{{ $page->facebook_url }}" target="_blank" class="text-white">Facebook</a></li>
+							    @endif
+							    @if ($page->twitter_url)
+							    <li><a href="{{ $page->twitter_url }}" target="_blank" class="text-white">Twitter</a></li>
+							    @endif
+							    @if ($page->instagram_url)
+							    <li><a href="{{ $page->instagram_url }}" target="_blank" class="text-white">Instagram</a></li>
+							    @endif
+							    @if ($page->linkedIn_url)
+							    <li><a href="{{ $page->linkedIn_url }}" target="_blank" class="text-white">LinkedIn</a></li>
+							    @endif
+							    @if ($page->pinterest_url)
+							    <li><a href="{{ $page->pinterest_url }}" target="_blank" class="text-white">Pinterest</a></li>
+							    @endif
+							    @if ($page->reddit_url)
+							    <li><a href="{{ $page->reddit_url }}" target="_blank" class="text-white">Reddit</a></li>
+							    @endif
+							    @if ($page->tiktok_url)
+							    <li><a href="{{ $page->tiktok_url }}" target="_blank" class="text-white">Tiktok</a></li>
+							    @endif
+							    @if ($page->whatsapp_url)
+							    <li><a href="{{ $page->whatsapp_url }}" target="_blank" class="text-white">Whatsapp</a></li>
+							    @endif
+							    @if ($page->youtube_url)
+							    <li><a href="{{ $page->youtube_url }}" target="_blank" class="text-white">Youtube</a></li>
+							    @endif
+							    @if ($page->quora_url)
+							    <li><a href="{{ $page->quora_url }}" target="_blank" class="text-white">Quora</a></li>
+							    @endif
+							    @if ($page->snapchat_url)
+							    <li><a href="{{ $page->snapchat_url }}" target="_blank" class="text-white">Snapchat</a></li>
+							    @endif
+							    @if ($page->telegram_url)
+							    <li><a href="{{ $page->telegram_url }}" target="_blank" class="text-white">Telegram</a></li>
+							    @endif
+							    @if ($page->tumblr_url)
+							    <li><a href="{{ $page->tumblr_url }}" target="_blank" class="text-white">Tumblr</a></li>
+							    @endif
+							    @if ($page->wechat_url)
+							    <li><a href="{{ $page->wechat_url }}" target="_blank" class="text-white">Wechat</a></li>
+							    @endif
 						    </ul>
 					    </div>
+						@endif
 				    </div>
 			    </div>
 		    </div>
