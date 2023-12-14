@@ -46,13 +46,6 @@
 
 				<div class="col-md-3 py-5">
 					<div class="position-sticky" style="top: 2rem;">
-						<div class="p-4 mb-3 bg-light rounded">
-							<h5>About</h5>
-							<p>
-								short_description
-								<a href="{{ route('blog.home') }}">Download Now!</a>
-							</p>
-						</div>
 
 						<div class="p-4">
 							<h5>Archives</h5>
@@ -71,17 +64,56 @@
 								<li><a href="#">April 2020</a></li>
 							</ol>
 						</div>
-
+						@if ($setting)
 						<div class="p-4">
 							<h5>Elsewhere</h5>
+
 							<ol class="list-unstyled">
-								<li><a href="https://github.com/codephics">GitHub</a></li>
-								<li><a href="https://twitter.com/codephics">Twitter</a></li>
-								<li><a href="https://facebook.com/codephics">Facebook</a></li>
-								<li><a href="https://instagram.com/codephics">Instagram</a></li>
-								<li><a href="https://stackoverflow.com/users/22997964/codephics">Stackoverflow</a></li>
+								@if ($setting->facebook_url)
+							    <li><a href="{{ $setting->facebook_url }}" target="_blank">Facebook</a></li>
+							    @endif
+							    @if ($setting->twitter_url)
+							    <li><a href="{{ $setting->twitter_url }}" target="_blank">Twitter</a></li>
+							    @endif
+							    @if ($setting->instagram_url)
+							    <li><a href="{{ $setting->instagram_url }}" target="_blank">Instagram</a></li>
+							    @endif
+							    @if ($setting->linkedIn_url)
+							    <li><a href="{{ $setting->linkedIn_url }}" target="_blank">LinkedIn</a></li>
+							    @endif
+							    @if ($setting->pinterest_url)
+							    <li><a href="{{ $setting->pinterest_url }}" target="_blank">Pinterest</a></li>
+							    @endif
+							    @if ($setting->reddit_url)
+							    <li><a href="{{ $setting->reddit_url }}" target="_blank">Reddit</a></li>
+							    @endif
+							    @if ($setting->tiktok_url)
+							    <li><a href="{{ $setting->tiktok_url }}" target="_blank">Tiktok</a></li>
+							    @endif
+							    @if ($setting->whatsapp_url)
+							    <li><a href="{{ $setting->whatsapp_url }}" target="_blank">Whatsapp</a></li>
+							    @endif
+							    @if ($setting->youtube_url)
+							    <li><a href="{{ $setting->youtube_url }}" target="_blank">Youtube</a></li>
+							    @endif
+							    @if ($setting->quora_url)
+							    <li><a href="{{ $setting->quora_url }}" target="_blank">Quora</a></li>
+							    @endif
+							    @if ($setting->snapchat_url)
+							    <li><a href="{{ $setting->snapchat_url }}" target="_blank">Snapchat</a></li>
+							    @endif
+							    @if ($setting->telegram_url)
+							    <li><a href="{{ $setting->telegram_url }}" target="_blank">Telegram</a></li>
+							    @endif
+							    @if ($setting->tumblr_url)
+							    <li><a href="{{ $setting->tumblr_url }}" target="_blank">Tumblr</a></li>
+							    @endif
+							    @if ($setting->wechat_url)
+							    <li><a href="{{ $setting->wechat_url }}" target="_blank">Wechat</a></li>
+							    @endif
 							</ol>
 						</div>
+						@endif
 					</div>
 				</div>
 			</div>

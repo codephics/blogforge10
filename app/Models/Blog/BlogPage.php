@@ -18,7 +18,7 @@ class BlogPage extends Model
         'name',
         'title',
         'slug',
-        'tags',
+        'keywords',
         'category_name',
         'subcategory_name',
         'sub_subcategory_name',

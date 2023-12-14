@@ -12,9 +12,9 @@
 
 		<title>{{ $page->meta_title }}</title>
 
-		<link rel="apple-touch-icon" sizes="180x180" href="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('blog/setting/' . $setting->favicon_apple) }}" />
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('blog/setting/' . $setting->favicon_32) }}" />
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('blog/setting/' . $setting->favicon_16) }}" />
 
 		<!-- Custom Head -->
 		@yield('custom-head')

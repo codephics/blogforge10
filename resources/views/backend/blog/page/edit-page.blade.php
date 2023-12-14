@@ -65,8 +65,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="tags" class="form-label">Tags</label>
-                            <input type="text" class="form-control" name="tags" value="{{ $page->tags }}" placeholder="Tags" />
+                            <label for="keywords" class="form-label">Keywords</label>
+                            <input type="text" class="form-control" name="tags" value="{{ $page->keywords }}" placeholder="Keywords" />
                             <div class="valid-feedback">
                                 Looks good!
                             </div>

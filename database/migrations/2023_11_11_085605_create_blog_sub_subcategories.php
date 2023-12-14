@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('blog_sub_subcategories', function (Blueprint $table) {
             $table->id();
-            $table->string('sub_subcategory_name', 199);
-            $table->string('subcategory_name', 199);
-            $table->string('slug', 199);
+            $table->string('sub_subcategory_name', 255);
+            $table->string('subcategory_name', 255);
+            $table->string('slug', 255);
             $table->text('title')->nullable();
-            $table->string('description', 199)->nullable();
-            $table->string('meta_title', 199)->nullable();
-            $table->string('meta_description', 199)->nullable();
-            $table->text('facebook_meta_title', 70)->nullable();
-            $table->text('facebook_meta_description', 170)->nullable();
-            $table->text('twitter_meta_title', 70)->nullable();
-            $table->text('twitter_meta_description', 170)->nullable();
+            $table->string('description', 255)->nullable();
+            $table->string('meta_title', 255)->nullable();
+            $table->string('meta_description', 255)->nullable();
+            $table->string('facebook_meta_title', 255)->nullable();
+            $table->string('facebook_meta_description', 255)->nullable();
+            $table->string('twitter_meta_title', 255)->nullable();
+            $table->string('twitter_meta_description', 255)->nullable();
             $table->string('icon', 255)->default('default-icon.png');
             $table->string('icon_alt_text', 255)->nullable();
             $table->string('thumb', 255)->default('default-icon.png');

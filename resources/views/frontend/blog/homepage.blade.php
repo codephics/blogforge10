@@ -78,7 +78,7 @@
                     <div class="card-body">
                         <strong class="d-inline-block mb-2 text-primary">{{ $blog->tags }}</strong>
                         <a href="{{ route('blog.detail',$blog->slug) }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">{{ \Illuminate\Support\Str::limit($blog->title, 45, '...') }}</a>
-                        <p class="card-text">{!! \Illuminate\Support\Str::limit($blog->short_description, 150, '...') !!}</p>
+                        <p class="card-text"></p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ route('blog.detail',$blog->slug) }}">Read</a>

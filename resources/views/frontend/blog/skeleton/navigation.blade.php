@@ -4,54 +4,54 @@
 			    <div class="container">
 				    <div class="row">
 					    <div class="col-sm-8 col-md-7 py-4">
-						    <h4 class="text-white">{{ $page->tagline }}</h4>
-						    <div class="text-muted">{!! $page->about_in_short !!}</div>
+						    <h4 class="text-white">{{ $setting->tagline }}</h4>
+						    <div class="text-muted">{!! $setting->about_in_short !!}</div>
 					    </div>
-						@if ($page)
+						@if ($setting)
 					    <div class="col-sm-4 offset-md-1 py-4">
 						    <h4 class="text-white">Like or Follow</h4>
 						    <ul class="list-unstyled">
-						    	@if ($page->facebook_url)
-							    <li><a href="{{ $page->facebook_url }}" target="_blank" class="text-white">Facebook</a></li>
+						    	@if ($setting->facebook_url)
+							    <li><a href="{{ $setting->facebook_url }}" target="_blank" class="text-white">Facebook</a></li>
 							    @endif
-							    @if ($page->twitter_url)
-							    <li><a href="{{ $page->twitter_url }}" target="_blank" class="text-white">Twitter</a></li>
+							    @if ($setting->twitter_url)
+							    <li><a href="{{ $setting->twitter_url }}" target="_blank" class="text-white">Twitter</a></li>
 							    @endif
-							    @if ($page->instagram_url)
-							    <li><a href="{{ $page->instagram_url }}" target="_blank" class="text-white">Instagram</a></li>
+							    @if ($setting->instagram_url)
+							    <li><a href="{{ $setting->instagram_url }}" target="_blank" class="text-white">Instagram</a></li>
 							    @endif
-							    @if ($page->linkedIn_url)
-							    <li><a href="{{ $page->linkedIn_url }}" target="_blank" class="text-white">LinkedIn</a></li>
+							    @if ($setting->linkedIn_url)
+							    <li><a href="{{ $setting->linkedIn_url }}" target="_blank" class="text-white">LinkedIn</a></li>
 							    @endif
-							    @if ($page->pinterest_url)
-							    <li><a href="{{ $page->pinterest_url }}" target="_blank" class="text-white">Pinterest</a></li>
+							    @if ($setting->pinterest_url)
+							    <li><a href="{{ $setting->pinterest_url }}" target="_blank" class="text-white">Pinterest</a></li>
 							    @endif
-							    @if ($page->reddit_url)
-							    <li><a href="{{ $page->reddit_url }}" target="_blank" class="text-white">Reddit</a></li>
+							    @if ($setting->reddit_url)
+							    <li><a href="{{ $setting->reddit_url }}" target="_blank" class="text-white">Reddit</a></li>
 							    @endif
-							    @if ($page->tiktok_url)
-							    <li><a href="{{ $page->tiktok_url }}" target="_blank" class="text-white">Tiktok</a></li>
+							    @if ($setting->tiktok_url)
+							    <li><a href="{{ $setting->tiktok_url }}" target="_blank" class="text-white">Tiktok</a></li>
 							    @endif
-							    @if ($page->whatsapp_url)
-							    <li><a href="{{ $page->whatsapp_url }}" target="_blank" class="text-white">Whatsapp</a></li>
+							    @if ($setting->whatsapp_url)
+							    <li><a href="{{ $setting->whatsapp_url }}" target="_blank" class="text-white">Whatsapp</a></li>
 							    @endif
-							    @if ($page->youtube_url)
-							    <li><a href="{{ $page->youtube_url }}" target="_blank" class="text-white">Youtube</a></li>
+							    @if ($setting->youtube_url)
+							    <li><a href="{{ $setting->youtube_url }}" target="_blank" class="text-white">Youtube</a></li>
 							    @endif
-							    @if ($page->quora_url)
-							    <li><a href="{{ $page->quora_url }}" target="_blank" class="text-white">Quora</a></li>
+							    @if ($setting->quora_url)
+							    <li><a href="{{ $setting->quora_url }}" target="_blank" class="text-white">Quora</a></li>
 							    @endif
-							    @if ($page->snapchat_url)
-							    <li><a href="{{ $page->snapchat_url }}" target="_blank" class="text-white">Snapchat</a></li>
+							    @if ($setting->snapchat_url)
+							    <li><a href="{{ $setting->snapchat_url }}" target="_blank" class="text-white">Snapchat</a></li>
 							    @endif
-							    @if ($page->telegram_url)
-							    <li><a href="{{ $page->telegram_url }}" target="_blank" class="text-white">Telegram</a></li>
+							    @if ($setting->telegram_url)
+							    <li><a href="{{ $setting->telegram_url }}" target="_blank" class="text-white">Telegram</a></li>
 							    @endif
-							    @if ($page->tumblr_url)
-							    <li><a href="{{ $page->tumblr_url }}" target="_blank" class="text-white">Tumblr</a></li>
+							    @if ($setting->tumblr_url)
+							    <li><a href="{{ $setting->tumblr_url }}" target="_blank" class="text-white">Tumblr</a></li>
 							    @endif
-							    @if ($page->wechat_url)
-							    <li><a href="{{ $page->wechat_url }}" target="_blank" class="text-white">Wechat</a></li>
+							    @if ($setting->wechat_url)
+							    <li><a href="{{ $setting->wechat_url }}" target="_blank" class="text-white">Wechat</a></li>
 							    @endif
 						    </ul>
 					    </div>
@@ -61,10 +61,15 @@
 		    </div>
 		    <div class="navbar navbar-dark bg-dark shadow-sm">
 			    <div class="container">
+			    	@if($setting->title && $setting->logo)
 				    <a href="{{ route('blog.home') }}" class="navbar-brand d-flex align-items-center">
-				    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-				    <strong>BlogForge10</strong>
-			    </a>
+					    <img src="{{ asset('blog/setting/' . $setting['logo']) }}" width="20" height="20" alt="{{ $setting->logo_alt_text }}">
+				    </a>
+				    @elseif($setting->title)
+				    <a href="{{ route('blog.home') }}" class="navbar-brand d-flex align-items-center">
+					    <strong>{{ $setting->title }}</strong>
+				    </a>
+				    @endif
 				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
 				    <span class="navbar-toggler-icon"></span>
 				    </button>

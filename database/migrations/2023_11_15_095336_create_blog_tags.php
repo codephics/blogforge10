@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('blog_tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('slug', 100);
+            $table->string('name', 255);
+            $table->string('slug', 255);
             $table->text('description')->nullable();
             $table->text('youtube_iframe')->nullable();
             $table->text('header_content')->nullable();
-            $table->string('meta_title', 100)->nullable();
-            $table->string('meta_description', 200)->nullable();
-            $table->string('facebook_meta_title', 100)->nullable();
-            $table->string('facebook_meta_description', 200)->nullable();
-            $table->string('twitter_meta_title', 100)->nullable();
-            $table->string('twitter_meta_description', 200)->nullable();
+            $table->string('meta_title', 255)->nullable();
+            $table->string('meta_description', 255)->nullable();
+            $table->string('facebook_meta_title', 255)->nullable();
+            $table->string('facebook_meta_description', 255)->nullable();
+            $table->string('twitter_meta_title', 255)->nullable();
+            $table->string('twitter_meta_description', 255)->nullable();
             $table->string('icon', 255)->default('default-icon.png');
             $table->string('icon_alt_text', 255)->nullable();
             $table->string('thumb', 255)->default('default-thumb.png');

@@ -21,30 +21,41 @@ class BlogPageController extends Controller
 {
     public function index($slug)
     {
-        $page = BlogPage::all();
-        $pageContent = BlogPage::where('slug', $slug)->firstOrFail();
+        // $page = BlogPage::all();
+        // $setting = BlogSetting::all();
+        // $pageContent = BlogPage::where('slug', $slug)->firstOrFail();
 
-        return view('frontend.blog.skeleton.body', ['page' => $page, 'pageContent' => $pageContent]);
+        // return view('frontend.blog.skeleton.body', [
+        //     'page' => $page,
+        //     'setting' => $setting,
+        //     'pageContent' => $pageContent
+        // ]);
+
+        Session::flash('message', __('Something Wrong!'));
     }
     
     public function homepage()
     {
         $page = BlogPage::where('slug', 'homepage')->firstOrFail();
+        $setting = BlogSetting::first();
         $blogs = Blog::take(36)->get();
 
         return view('frontend.blog.homepage', [
             'page' => $page,
+            'setting' => $setting,
             'blogs' => $blogs
         ]);
     }
 
     public function blogs()
     {
-        $page = BlogSetting::first();
+        $page = BlogPage::where('slug', 'more-blogs')->firstOrFail();
+        $setting = BlogSetting::first();
         $blogs = Blog::all();
 
         return view('frontend.blog.more', [
             'page' => $page,
+            'setting' => $setting,
             'blogs' => $blogs
         ]);
     }
@@ -52,11 +63,13 @@ class BlogPageController extends Controller
     public function detail($slug)
     {
         $page = Blog::where('slug', $slug)->firstOrFail();
+        $blog = Blog::where('slug', $slug)->firstOrFail();
         $setting = BlogSetting::first();
         $relatedBlog = Blog::take(4)->get();
 
         return view('frontend.blog.detail', [
             'page' => $page,
+            'blog' => $blog,
             'setting' => $setting,
             'relatedBlog' => $relatedBlog
         ]);
@@ -65,29 +78,45 @@ class BlogPageController extends Controller
     public function privacy()
     {
         $page = BlogPage::where('slug', 'privacy-policy')->firstOrFail();
+        $setting = BlogSetting::first();
         
-        return view('frontend.blog.privacy-policy', ['page' => $page]);
+        return view('frontend.blog.privacy-policy', [
+            'page' => $page,
+            'setting' => $setting,
+        ]);
     }
     
     public function terms()
     {
         $page = BlogPage::where('slug', 'terms-of-service')->firstOrFail();
+        $setting = BlogSetting::first();
         
-        return view('frontend.blog.terms-of-service', ['page' => $page]);
+        return view('frontend.blog.terms-of-service', [
+            'page' => $page,
+            'setting' => $setting,
+        ]);
     }
     
     public function license()
     {
         $page = BlogPage::where('slug', 'license')->firstOrFail();
+        $setting = BlogSetting::first();
         
-        return view('frontend.blog.license', ['page' => $page]);
+        return view('frontend.blog.license', [
+            'page' => $page,
+            'setting' => $setting,
+        ]);
     }
     
     public function error404()
     {
         $page = BlogPage::where('slug', '404')->firstOrFail();
+        $setting = BlogSetting::first();
         
-        return view('frontend.blog.404', ['page' => $page]);
+        return view('frontend.blog.404', [
+            'page' => $page,
+            'setting' => $setting,
+        ]);
     }
 
     public function create(Request $request)
@@ -115,7 +144,7 @@ class BlogPageController extends Controller
             'name' => $request->name,
             'title' => $request->title,
             'slug' => $request->slug,
-            'tags' => $request->tags,
+            'keywords' => $request->keywords,
             'category_name' => $request->category_name,
             'subcategory_name' => $request->subcategory_name,
             'sub_subcategory_name' => $request->sub_subcategory_name,
@@ -255,7 +284,7 @@ class BlogPageController extends Controller
             $page->name = $request->input('name');
             $page->title = $request->input('title');
             $page->slug = $request->input('slug');            
-            $page->tags = $request->input('tags');
+            $page->keywords = $request->input('keywords');
             $page->category_name = $request->input('category_name');
             $page->subcategory_name = $request->input('subcategory_name');
             $page->sub_subcategory_name = $request->input('sub_subcategory_name');

@@ -13,23 +13,23 @@ return new class extends Migration
     {
         Schema::create('blog_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('title', 100);
-            $table->string('slug', 100);
-            $table->string('tags', 255)->nullable();
-            $table->string('category_name', 100)->nullable();
-            $table->string('subcategory_name', 100)->nullable();
-            $table->string('sub_subcategory_name', 100)->nullable();
+            $table->string('name', 255);
+            $table->string('title', 255);
+            $table->string('slug', 255);
+            $table->text('keywords')->nullable();
+            $table->string('category_name', 255)->nullable();
+            $table->string('subcategory_name', 255)->nullable();
+            $table->string('sub_subcategory_name', 255)->nullable();
             $table->text('short_description')->nullable();
             $table->text('long_description')->nullable();
             $table->text('youtube_iframe')->nullable();
             $table->text('header_content')->nullable();
-            $table->text('meta_title')->nullable();
-            $table->text('meta_description')->nullable();
-            $table->text('facebook_meta_title')->nullable();
-            $table->text('facebook_meta_description')->nullable();
-            $table->text('twitter_meta_title')->nullable();
-            $table->text('twitter_meta_description')->nullable();
+            $table->string('meta_title', 255)->nullable();
+            $table->string('meta_description', 255)->nullable();
+            $table->string('facebook_meta_title', 255)->nullable();
+            $table->string('facebook_meta_description', 255)->nullable();
+            $table->string('twitter_meta_title', 255)->nullable();
+            $table->string('twitter_meta_description', 255)->nullable();
             $table->string('thumb', 255)->default('default-thumb.png');
             $table->string('thumb_alt_text', 255)->nullable();
             $table->string('breadcrumb_image', 255)->default('default-breadcrumb.png');
@@ -68,6 +68,16 @@ return new class extends Migration
                 'name' => 'About Us',
                 'title' => '',
                 'slug' => 'about-us',
+            ],
+            [
+                'name' => 'Contact Us',
+                'title' => '',
+                'slug' => 'contact-us',
+            ],
+            [
+                'name' => 'More Blogs',
+                'title' => '',
+                'slug' => 'more-blogs',
             ],
         ]);
     }

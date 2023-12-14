@@ -59,7 +59,13 @@ class BlogController extends Controller
             'header_content' => $request->header_content,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
+            'facebook_meta_title' => $request->facebook_meta_title,
+            'facebook_meta_description' => $request->facebook_meta_description,
+            'twitter_meta_title' => $request->twitter_meta_title,
+            'twitter_meta_description' => $request->twitter_meta_description,
             'is_featured' => $request->is_featured,
+            'featured_img_alt_text' => $request->featured_img_alt_text,
+            'og_img_alt_text' => $request->og_img_alt_text,
             'status' => $request->status,
             'comment' => $request->comment,
         ]);
@@ -173,7 +179,13 @@ class BlogController extends Controller
             $blog->header_content = $request->input('header_content');
             $blog->meta_title = $request->input('meta_title');
             $blog->meta_description = $request->input('meta_description');
+            $blog->facebook_meta_title = $request->input('facebook_meta_title');
+            $blog->facebook_meta_description = $request->input('facebook_meta_description');
+            $blog->twitter_meta_title = $request->input('twitter_meta_title');
+            $blog->twitter_meta_description = $request->input('twitter_meta_description');
             $blog->is_featured = $request->input('is_featured');
+            $blog->featured_img_alt_text = $request->input('featured_img_alt_text');
+            $blog->og_img_alt_text = $request->input('og_img_alt_text');
 
             if (!is_null($request->input('status'))) {
                 $blog->status = $request->input('status');
@@ -194,7 +206,7 @@ class BlogController extends Controller
 
         Session::flash('update', __('Blog Successfully Updated!'));
         
-        return back();
+        return redirect(RouteServiceProvider::Blog);
     }
 
     public function destroy(Request $request, $id)
@@ -203,6 +215,6 @@ class BlogController extends Controller
 
         Session::flash('delete', __('Blog Successfully Deleted!'));
         
-        return back();
+        return redirect(RouteServiceProvider::Blog);
     }
 }
