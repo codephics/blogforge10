@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\Controller;
 
 use App\Models\Blog\Blog;
+use App\Models\Blog\BlogTag;
 use App\Models\Blog\BlogSetting;
 use App\Models\Blog\BlogCategory;
 use App\Models\Blog\BlogSubcategory;
@@ -24,11 +25,13 @@ class BlogController extends Controller
 
     public function create(Request $request)
     {
+        $tags = BlogTag::all();
         $categories = BlogCategory::all();
         $subcategories = BlogSubcategory::all();
         $sub_subcategories = BlogSubSubcategory::all();
 
         return view('backend.blog.new-blog', [
+            'tags' => $tags, 
             'categories' => $categories, 
             'subcategories' => $subcategories, 
             'sub_subcategories' => $sub_subcategories,
@@ -49,14 +52,13 @@ class BlogController extends Controller
             'title' => $request->title,
             'slug' => $request->slug,
             'tags' => $request->tags,
-            'header_title' => $request->header_title,
+            'author' => $request->author,
             'category_name' => $request->category_name,
             'subcategory_name' => $request->subcategory_name,
             'sub_subcategory_name' => $request->sub_subcategory_name,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'youtube_iframe' => $request->youtube_iframe,
-            'header_content' => $request->header_content,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
             'facebook_meta_title' => $request->facebook_meta_title,
@@ -169,14 +171,13 @@ class BlogController extends Controller
             $blog->title = $request->input('title');
             $blog->slug = $request->input('slug');            
             $blog->tags = $request->input('tags');
-            $blog->header_title = $request->input('header_title');
+            $blog->author = $request->input('author');
             $blog->category_name = $request->input('category_name');
             $blog->subcategory_name = $request->input('subcategory_name');
             $blog->sub_subcategory_name = $request->input('sub_subcategory_name');
             $blog->short_description = $request->input('short_description');
             $blog->long_description = $request->input('long_description');
             $blog->youtube_iframe = $request->input('youtube_iframe');
-            $blog->header_content = $request->input('header_content');
             $blog->meta_title = $request->input('meta_title');
             $blog->meta_description = $request->input('meta_description');
             $blog->facebook_meta_title = $request->input('facebook_meta_title');

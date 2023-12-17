@@ -60,6 +60,7 @@
             <p class="lead text-muted">{!! $page->short_description !!}</p>
             <p>
                 <a href="{{ route('blog.more') }}" class="btn btn-primary my-2">Explore More Blogs</a>
+                <a href="https://codephics.com/solution/detail/blogforge-10" class="btn btn-secondary my-2">Download Now!</a>
             </p>
         </div>
     </div>
@@ -83,7 +84,7 @@
                             <div class="btn-group">
                                 <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ route('blog.detail',$blog->slug) }}">Read</a>
                             </div>
-                            <small class="mb-1 text-muted">{{ $blog->created_at }}</small>
+                            <small class="mb-1 text-muted">{{ $blog->created_at->format('M d, Y') }}</small>
                         </div>
                     </div>
                 </div>

@@ -58,17 +58,19 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="tags" class="form-label">Tags *</label>
-                            <input type="text" class="form-control" name="tags" placeholder="Tags" />
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                            <label for="tags" class="form-label">Tags</label>
+                            <input class="form-control" list="datalistCategory" name="tags" placeholder="Tags" />
+                            <datalist id="datalistCategory">
+                                @foreach($tags as $tag)
+                                <option value="{{ $tag->name }}"></option>
+                                @endforeach
+                            </datalist>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="header_title" class="form-label">Header Title</label>
-                            <input type="text" class="form-control" name="header_title" placeholder="Header Title" />
+                            <label for="author" class="form-label">Author</label>
+                            <input type="text" class="form-control" name="author" value="{{ Auth::user()->name }}" placeholder="Author" />
                         </div>
                     </div>
                 </div>

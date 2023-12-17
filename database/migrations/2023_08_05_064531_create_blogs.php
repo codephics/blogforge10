@@ -16,16 +16,13 @@ return new class extends Migration
             $table->string('title', 255);
             $table->string('slug', 255);
             $table->string('tags', 255)->nullable();
-            $table->string('header_title', 255)->nullable();
+            $table->string('author', 255)->default('Codephics');
             $table->string('category_name', 255)->nullable();
             $table->string('subcategory_name', 255)->nullable();
             $table->string('sub_subcategory_name', 255)->nullable();
-            $table->string('template', 255)->nullable();
-            $table->string('seller_name', 255)->default('TempDev');
             $table->text('short_description')->nullable();
             $table->text('long_description')->nullable();
             $table->text('youtube_iframe')->nullable();
-            $table->text('header_content')->nullable();
             $table->string('meta_title', 255)->nullable();
             $table->string('meta_description', 255)->nullable();
             $table->string('facebook_meta_title', 255)->nullable();

@@ -60,16 +60,18 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="tags" class="form-label">Tags</label>
-                            <input type="text" class="form-control" name="tags" value="{{ $blog->tags }}" placeholder="Tags" />
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                            <input class="form-control" list="datalistTag" name="tags" value="{{ $blog->tags }}" placeholder="Tag" />
+                            <datalist id="datalistTag">
+                                @foreach($tags as $tag)
+                                <option value="{{ $tag->name }}"></option>
+                                @endforeach
+                            </datalist>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="header_title" class="form-label">Header Title</label>
-                            <input type="text" class="form-control" name="header_title" value="{{ $blog->header_title }}" placeholder="Header Title" />
+                            <label for="author" class="form-label">Author</label>
+                            <input type="text" class="form-control" name="author" value="{{ $blog->author }}" placeholder="Author" />
                         </div>
                     </div>
                 </div>

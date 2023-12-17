@@ -34,7 +34,7 @@
 			                                <div class="btn-group">
 			                                    <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ route('blog.detail',$blog->slug) }}">Read</a>
 			                                </div>
-			                                <small class="mb-1 text-muted">{{ $blog->created_at }}</small>
+			                                <small class="mb-1 text-muted">{{ $blog->created_at->format('M d, Y') }}</small>
 			                            </div>
 			                        </div>
 			                    </div>
@@ -47,7 +47,7 @@
 				<div class="col-md-3 py-5">
 					<div class="position-sticky" style="top: 2rem;">
 
-						<div class="p-4">
+						<!-- <div class="p-4">
 							<h5>Archives</h5>
 							<ol class="list-unstyled mb-0">
 								<li><a href="#">March 2021</a></li>
@@ -63,7 +63,7 @@
 								<li><a href="#">May 2020</a></li>
 								<li><a href="#">April 2020</a></li>
 							</ol>
-						</div>
+						</div> -->
 						@if ($setting)
 						<div class="p-4">
 							<h5>Elsewhere</h5>
