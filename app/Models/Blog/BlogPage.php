@@ -40,6 +40,9 @@ class BlogPage extends Model
         'cover_alt_text',
         'og_image',
         'og_img_alt_text',
+        'is_index',
+        'is_follow',
+        'is_featured',
         'status',
         'comment',
     ];

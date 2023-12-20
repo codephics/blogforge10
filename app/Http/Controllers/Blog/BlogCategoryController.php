@@ -38,23 +38,12 @@ class BlogCategoryController extends Controller
             return view('backend.blog.category.new-sub-subcategory', ['subcategories' => $subcategories]);
         }
         
-        // Default view if none of the routes match
         return view('backend.dashboard');
     }
     public function store(Request $request): RedirectResponse
     {
 
         if ($request->routeIs('blog.new-category.store')) {
-
-            // $request->validate([
-            //     'name' => ['required', 'string', 'max:255'],
-            //     'slug' => ['required', 'regex:/^[a-z]+$/'],
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // ], [
-            //     'slug.regex' => 'The :attribute field must contain only lowercase letters.'
-            // ]);
-
-            // dd($request);
 
             $category = BlogCategory::create([
                 'category_name' => $request->category_name,
@@ -71,6 +60,11 @@ class BlogCategoryController extends Controller
                 'thumb_alt_text' => $request->thumb_alt_text,
                 'cover_alt_text' => $request->cover_alt_text,
                 'og_img_alt_text' => $request->og_img_alt_text,
+                'is_index' => $request->is_index,
+                'is_follow' => $request->is_follow,
+                'is_featured' => $request->is_featured,
+                'status' => $request->status,
+                'comment' => $request->comment,
             ]);
 
             $category->save();
@@ -108,14 +102,6 @@ class BlogCategoryController extends Controller
             return redirect(RouteServiceProvider::BlogCategories);
 
         } elseif ($request->routeIs('blog.new-subcategory.store')) {
-            
-            // $request->validate([
-            //     'name' => ['required', 'string', 'max:255'],
-            //     'slug' => ['required', 'regex:/^[a-z]+$/'],
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // ], [
-            //     'slug.regex' => 'The :attribute field must contain only lowercase letters.'
-            // ]);
 
             $subcategory = BlogSubcategory::create([
                 'category_name' => $request->category_name,
@@ -133,6 +119,11 @@ class BlogCategoryController extends Controller
                 'thumb_alt_text' => $request->thumb_alt_text,
                 'cover_alt_text' => $request->cover_alt_text,
                 'og_img_alt_text' => $request->og_img_alt_text,
+                'is_index' => $request->is_index,
+                'is_follow' => $request->is_follow,
+                'is_featured' => $request->is_featured,
+                'status' => $request->status,
+                'comment' => $request->comment,
             ]);
 
             $subcategory->save();
@@ -171,14 +162,6 @@ class BlogCategoryController extends Controller
 
         } elseif ($request->routeIs('blog.new-sub-subcategory.store')) {
             
-            // $request->validate([
-            //     'name' => ['required', 'string', 'max:255'],
-            //     'slug' => ['required', 'regex:/^[a-z]+$/'],
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // ], [
-            //     'slug.regex' => 'The :attribute field must contain only lowercase letters.'
-            // ]);
-
             $subSubcategory = BlogSubSubCategory::create([
                 'sub_subcategory_name' => $request->sub_subcategory_name,
                 'subcategory_name' => $request->subcategory_name,
@@ -195,6 +178,11 @@ class BlogCategoryController extends Controller
                 'thumb_alt_text' => $request->thumb_alt_text,
                 'cover_alt_text' => $request->cover_alt_text,
                 'og_img_alt_text' => $request->og_img_alt_text,
+                'is_index' => $request->is_index,
+                'is_follow' => $request->is_follow,
+                'is_featured' => $request->is_featured,
+                'status' => $request->status,
+                'comment' => $request->comment,
             ]);
 
             $subSubcategory->save();
@@ -233,7 +221,6 @@ class BlogCategoryController extends Controller
 
         }
         
-        // Default view if none of the routes match
         return view('backend.dashboard');
     }
 
@@ -256,10 +243,8 @@ class BlogCategoryController extends Controller
             $sub_subcategories = BlogSubSubcategory::all();
             
             return view('backend.blog.category.manage-sub-subcategory', ['sub_subcategories' => $sub_subcategories]);
-
         }
         
-        // Default view if none of the routes match
         return view('backend.dashboard');
     }
 
@@ -286,10 +271,8 @@ class BlogCategoryController extends Controller
             $sub_subcategory = BlogSubSubcategory::findOrFail($id);
             
             return view('backend.blog.category.edit-sub-subcategory', ['subcategories' => $subcategories, 'sub_subcategory' => $sub_subcategory]);
-
         }
         
-        // Default view if none of the routes match
         return view('backend.dashboard');
     }
 
@@ -303,9 +286,6 @@ class BlogCategoryController extends Controller
                 $newIcon = $request->file('icon');
 
                 if ($newIcon) {
-                    $validatedData = $request->validate([
-                        // 'icon' => 'icon|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newIconName = $request->icon->getClientOriginalName();
                     $request->icon->move(public_path('blog/category/icon'), $newIconName);
@@ -316,9 +296,6 @@ class BlogCategoryController extends Controller
                 $newThumb = $request->file('thumb');
 
                 if ($newThumb) {
-                    $validatedData = $request->validate([
-                        // 'thumb' => 'thumb|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newThumbName = $request->thumb->getClientOriginalName();
                     $request->thumb->move(public_path('blog/category/thumb'), $newThumbName);
@@ -329,9 +306,6 @@ class BlogCategoryController extends Controller
                 $newCover = $request->file('cover');
 
                 if ($newCover) {
-                    $validatedData = $request->validate([
-                        // 'cover' => 'cover|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newCoverName = $request->cover->getClientOriginalName();
                     $request->cover->move(public_path('blog/category/cover'), $newCoverName);
@@ -342,9 +316,6 @@ class BlogCategoryController extends Controller
                 $newOG = $request->file('og_image');
 
                 if ($newOG) {
-                    $validatedData = $request->validate([
-                        // 'og_image' => 'og|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newOGName = $request->og_image->getClientOriginalName();
                     $request->og_image->move(public_path('blog/category/og'), $newOGName);
@@ -366,6 +337,15 @@ class BlogCategoryController extends Controller
                 $category->thumb_alt_text = $request->input('thumb_alt_text');
                 $category->cover_alt_text = $request->input('cover_alt_text');
                 $category->og_img_alt_text = $request->input('og_img_alt_text');
+                $category->is_index = $request->input('is_index');
+                $category->is_follow = $request->input('is_follow');
+                $category->is_featured = $request->input('is_featured');
+
+                if (!is_null($request->input('status'))) {
+                    $category->status = $request->input('status');
+                }                        
+                
+                $category->comment = $request->input('comment');
 
                 $category->save();
 
@@ -387,9 +367,6 @@ class BlogCategoryController extends Controller
                 $newIcon = $request->file('icon');
 
                 if ($newIcon) {
-                    $validatedData = $request->validate([
-                        // 'icon' => 'icon|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newIconName = $request->icon->getClientOriginalName();
                     $request->icon->move(public_path('blog/category/subcategory/icon'), $newIconName);
@@ -400,9 +377,6 @@ class BlogCategoryController extends Controller
                 $newThumb = $request->file('thumb');
 
                 if ($newThumb) {
-                    $validatedData = $request->validate([
-                        // 'thumb' => 'thumb|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newThumbName = $request->thumb->getClientOriginalName();
                     $request->thumb->move(public_path('blog/category/subcategory/thumb'), $newThumbName);
@@ -413,9 +387,6 @@ class BlogCategoryController extends Controller
                 $newCover = $request->file('cover');
 
                 if ($newCover) {
-                    $validatedData = $request->validate([
-                        // 'cover' => 'cover|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newCoverName = $request->cover->getClientOriginalName();
                     $request->cover->move(public_path('blog/category/subcategory/cover'), $newCoverName);
@@ -426,9 +397,6 @@ class BlogCategoryController extends Controller
                 $newOG = $request->file('og_image');
 
                 if ($newOG) {
-                    $validatedData = $request->validate([
-                        // 'og_image' => 'og|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newOGName = $request->og_image->getClientOriginalName();
                     $request->og_image->move(public_path('blog/category/subcategory/og'), $newOGName);
@@ -451,6 +419,15 @@ class BlogCategoryController extends Controller
                 $subcategory->thumb_alt_text = $request->input('thumb_alt_text');
                 $subcategory->cover_alt_text = $request->input('cover_alt_text');
                 $subcategory->og_img_alt_text = $request->input('og_img_alt_text');
+                $subcategory->is_index = $request->input('is_index');
+                $subcategory->is_follow = $request->input('is_follow');
+                $subcategory->is_featured = $request->input('is_featured');
+
+                if (!is_null($request->input('status'))) {
+                    $subcategory->status = $request->input('status');
+                }                        
+                
+                $subcategory->comment = $request->input('comment');
 
                 $subcategory->save();
 
@@ -472,9 +449,6 @@ class BlogCategoryController extends Controller
                 $newIcon = $request->file('icon');
 
                 if ($newIcon) {
-                    $validatedData = $request->validate([
-                        // 'icon' => 'icon|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newIconName = $request->icon->getClientOriginalName();
                     $request->icon->move(public_path('blog/category/subcategory/sub-subcategory/icon'), $newIconName);
@@ -485,9 +459,6 @@ class BlogCategoryController extends Controller
                 $newThumb = $request->file('thumb');
 
                 if ($newThumb) {
-                    $validatedData = $request->validate([
-                        // 'thumb' => 'thumb|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newThumbName = $request->thumb->getClientOriginalName();
                     $request->thumb->move(public_path('blog/category/subcategory/sub-subcategory/thumb'), $newThumbName);
@@ -498,9 +469,6 @@ class BlogCategoryController extends Controller
                 $newCover = $request->file('cover');
 
                 if ($newCover) {
-                    $validatedData = $request->validate([
-                        // 'cover' => 'cover|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newCoverName = $request->cover->getClientOriginalName();
                     $request->cover->move(public_path('blog/category/subcategory/sub-subcategory/cover'), $newCoverName);
@@ -511,9 +479,6 @@ class BlogCategoryController extends Controller
                 $newOG = $request->file('og_image');
 
                 if ($newOG) {
-                    $validatedData = $request->validate([
-                        // 'og_image' => 'og|mimes:jpeg,png,jpg,gif|max:2048',
-                    ]);
 
                     $newOGName = $request->og_image->getClientOriginalName();
                     $request->og_image->move(public_path('blog/category/subcategory/sub-subcategory/og'), $newOGName);
@@ -536,6 +501,15 @@ class BlogCategoryController extends Controller
                 $sub_subcategory->thumb_alt_text = $request->input('thumb_alt_text');
                 $sub_subcategory->cover_alt_text = $request->input('cover_alt_text');
                 $sub_subcategory->og_img_alt_text = $request->input('og_img_alt_text');
+                $sub_subcategory->is_index = $request->input('is_index');
+                $sub_subcategory->is_follow = $request->input('is_follow');
+                $sub_subcategory->is_featured = $request->input('is_featured');
+
+                if (!is_null($request->input('status'))) {
+                    $sub_subcategory->status = $request->input('status');
+                }                        
+                
+                $sub_subcategory->comment = $request->input('comment');
 
                 $sub_subcategory->save();
 
@@ -550,7 +524,6 @@ class BlogCategoryController extends Controller
             return back();
         }
         
-        // Default view if none of the routes match
         return view('backend.dashboard');
     }
 
@@ -581,7 +554,6 @@ class BlogCategoryController extends Controller
             return back();
         }
         
-        // Default view if none of the routes match
         return view('backend.dashboard');
     }
 }

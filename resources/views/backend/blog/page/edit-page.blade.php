@@ -66,7 +66,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="keywords" class="form-label">Keywords</label>
-                            <input type="text" class="form-control" name="tags" value="{{ $page->keywords }}" placeholder="Keywords" />
+                            <input type="text" class="form-control" name="keywords[]" value="{{ $page->keywords }}" placeholder="Keywords" />
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -190,66 +190,73 @@
                         <div class="mb-3">
                             <input class="form-control" type="text" name="thumb_alt_text" value="{{ $page->thumb_alt_text }}" placeholder="Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="fthumb" class="form-label">Thumb</label>
                             <input class="form-control" type="file" name="thumb" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <img src="{{ asset('blog/page/image/breadcrumb/' . $page->breadcrumb_image) }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="breadcrumb_alt_text" value="{{ $page->breadcrumb_alt_text }}" placeholder="Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="breadcrumb_image" class="form-label">Breadcrumb</label>
                             <input class="form-control" type="file" name="breadcrumb_image" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <img src="{{ asset('blog/page/image/cover/' . $page->cover_image) }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="cover_alt_text" value="{{ $page->cover_alt_text }}" placeholder="Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="cover_image" class="form-label">Cover</label>
                             <input class="form-control" type="file" name="cover_image" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <img src="{{ asset('blog/page/image/og/' . $page->og_image) }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $page->og_img_alt_text }}" placeholder="Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="og_image" class="form-label">Upload OG</label>
                             <input class="form-control" type="file" name="og_image" multiple />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
-                            <label for="status" class="form-label">Status</label>
-                            <input class="form-control" list="datalistStatus" name="status" placeholder="@if($page->status == 1) Published @else Draft @endif" />
-                            <datalist id="datalistStatus">
-                                <option value="1">Publish</option>
-                                <option value="0">Draft</option>
-                            </datalist>
+                            <label class="form-label" for="content">Content?</label>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_index" value="1" id="featuredCheckDefault" @if($page->is_index == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Index?</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_follow" value="1" id="featuredCheckDefault" @if($page->is_follow == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Follow?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault" @if($page->is_featured == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Featured?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupStatus">Status</label>
+                                <select class="form-select" id="inputGroupStatus" name="status">
+                                    @if($page->status == 1)
+                                    <option value="1">Published</option>
+                                    <option value="0">Draft</option>
+                                    @else
+                                    <option value="0">Draft</option>
+                                    <option value="1">Publish</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label for="comment" class="form-label">Comment</label>
                             <textarea class="form-control" id="custom-textarea" name="comment" rows="3">{{ $page->comment }}</textarea>
@@ -261,8 +268,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-primary">Publish</button>
-                <button type="submit" class="btn btn-primary">Draft</button>
-                <button type="submit" class="btn btn-secondary">Publish & Add Another</button>
             </div>
         </div>
     </form>

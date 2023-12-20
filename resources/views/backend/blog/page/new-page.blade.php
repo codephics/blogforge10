@@ -65,7 +65,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="keywords" class="form-label">Keywords</label>
-                            <input type="text" class="form-control" name="keywords" placeholder="Keywords" />
+                            <input type="text" class="form-control" name="keywords[]" placeholder="Keywords" />
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -190,8 +190,6 @@
                         <div class="mb-3">
                             <input class="form-control" type="text" name="thumb_alt_text" placeholder="Thumb Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="breadcrumb_image" class="form-label">Breadcrumb Image</label>
                             <input class="form-control" type="file" name="breadcrumb_image" />
@@ -199,8 +197,6 @@
                         <div class="mb-3">
                             <input class="form-control" type="text" name="breadcrumb_alt_text" placeholder="Breadcrumb Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="cover_image" class="form-label">Cover Image</label>
                             <input class="form-control" type="file" name="cover_image" />
@@ -208,8 +204,6 @@
                         <div class="mb-3">
                             <input class="form-control" type="text" name="cover_alt_text" placeholder="Cover Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="og_image" class="form-label">Upload OG</label>
                             <input class="form-control" type="file" name="og_image" multiple />
@@ -217,18 +211,35 @@
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" placeholder="OG Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
-                            <label for="status" class="form-label">Status</label>
-                            <input class="form-control" list="datalistStatus" name="status" placeholder="Status" />
-                            <datalist id="datalistStatus">
+                            <label class="form-label" for="content">Content?</label>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_index" value="1" id="featuredCheckDefault" />
+                                <label class="form-check-label" for="featuredCheckDefault">Index?</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_follow" value="1" id="featuredCheckDefault" />
+                                <label class="form-check-label" for="featuredCheckDefault">Follow?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault" />
+                                <label class="form-check-label" for="featuredCheckDefault">
+                                    Featured?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupStatus">Status</label>
+                            <select class="form-select" id="inputGroupStatus" name="status">
+                                <option value="0">Choose...</option>
                                 <option value="1">Publish</option>
                                 <option value="0">Draft</option>
-                            </datalist>
+                            </select>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="comment" class="form-label">Comment</label>
                             <textarea class="form-control" id="custom-textarea" name="comment" rows="3"></textarea>
@@ -240,8 +251,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-primary">Publish</button>
-                <button type="submit" class="btn btn-primary">Draft</button>
-                <button type="submit" class="btn btn-secondary">Publish & Add Another</button>
             </div>
         </div>
     </form>

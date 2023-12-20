@@ -43,7 +43,8 @@
                             <li class="d-flex align-items-start mb-1"><a href="{{ route('blog.subcategories') }}">Manage Subcategories</a></li>
                             <li class="d-flex align-items-start mb-1"><a href="{{ route('blog.sub-subcategories') }}">Manage Sub Subcategories</a></li>
                             <li class="d-flex align-items-start mb-1"><a href="{{ route('blog.tag') }}">Manage Tags</a></li>
-                            <li class="d-flex align-items-start mb-1"><a href="{{ route('blog.comments') }}">Manage Comments</a></li>
+                            <li class="d-flex align-items-start mb-1"><a href="{{ route('blog.page.manage-pages') }}">Manage Pages</a></li>
+                            <li class="d-flex align-items-start mb-1"><a href="{{ route('blog.setting.edit') }}">Manage Setting</a></li>
                         </ul>
                     </div>
                 </div>

@@ -120,8 +120,6 @@
                             <label for="icon" class="form-label">Icon *</label>
                             <input class="form-control" type="file" name="icon" id="icon" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <img src="{{ asset('blog/tag/thumb/' . $tag->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
@@ -132,8 +130,6 @@
                             <label for="thumb" class="form-label">Thumb *</label>
                             <input class="form-control" type="file" name="thumb" id="thumb" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <img src="{{ asset('blog/tag/cover/' . $tag->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
@@ -144,8 +140,6 @@
                             <label for="cover" class="form-label">Cover *</label>
                             <input class="form-control" type="file" name="cover" id="cover" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <img src="{{ asset('blog/tag/og/' . $tag->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
@@ -156,6 +150,43 @@
                             <label for="og_image" class="form-label">OG Image</label>
                             <input class="form-control" type="file" name="og_image" id="og_image" />
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="content">Content?</label>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_index" value="1" id="featuredCheckDefault" @if($tag->is_index == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Index?</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_follow" value="1" id="featuredCheckDefault" @if($tag->is_follow == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Follow?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault" @if($tag->is_featured == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Featured?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupStatus">Status</label>
+                                <select class="form-select" id="inputGroupStatus" name="status">
+                                    @if($tag->status == 1)
+                                    <option value="1">Published</option>
+                                    <option value="0">Draft</option>
+                                    @else
+                                    <option value="0">Draft</option>
+                                    <option value="1">Publish</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment" class="form-label">Comment</label>
+                            <textarea class="form-control" id="custom-textarea" name="comment" rows="3">{{ $tag->comment }}</textarea>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,8 +194,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-primary">Publish</button>
-                <button type="submit" class="btn btn-primary">Draft</button>
-                <button type="submit" class="btn btn-secondary">Publish & Add Another</button>
             </div>
         </div>
     </form>

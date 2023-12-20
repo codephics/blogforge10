@@ -30,14 +30,6 @@ class BlogTagController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'slug' => ['required', 'regex:/^[a-z]+$/'],
-        // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ], [
-        //     'slug.regex' => 'The :attribute field must contain only lowercase letters.'
-        // ]);
-
         $tag = BlogTag::create([
             'name' => $request->name,
             'slug' => $request->slug,
@@ -54,6 +46,9 @@ class BlogTagController extends Controller
             'thumb_alt_text' => $request->thumb_alt_text,
             'cover_alt_text' => $request->cover_alt_text,
             'og_img_alt_text' => $request->og_img_alt_text,
+            'is_index' => $request->is_index,
+            'is_follow' => $request->is_follow,
+            'is_featured' => $request->is_featured,
             'status' => $request->status,
             'comment' => $request->comment,
         ]);
@@ -83,8 +78,6 @@ class BlogTagController extends Controller
             $request->file('og_image')->move(public_path('blog/tag/og'), $oGImage);
             $tag->og_image = $oGImage;
         }
-
-        // dd($tag);
 
         if ($request->hasFile('icon') || $request->hasFile('thumb') || $request->hasFile('cover') || $request->hasFile('og_image')) {
             $tag->save();
@@ -119,9 +112,6 @@ class BlogTagController extends Controller
             $newIcon = $request->file('icon');
 
             if ($newIcon) {
-                $validatedData = $request->validate([
-                    // 'icon' => 'icon|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $newIconName = $request->icon->getClientOriginalName();
                 $request->icon->move(public_path('blog/tag/icon'), $newIconName);
@@ -132,9 +122,6 @@ class BlogTagController extends Controller
             $newThumb = $request->file('thumb');
 
             if ($newThumb) {
-                $validatedData = $request->validate([
-                    // 'thumb' => 'thumb|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $newThumbName = $request->thumb->getClientOriginalName();
                 $request->thumb->move(public_path('blog/tag/thumb'), $newThumbName);
@@ -145,9 +132,6 @@ class BlogTagController extends Controller
             $newCover = $request->file('cover');
 
             if ($newCover) {
-                $validatedData = $request->validate([
-                    // 'cover' => 'cover|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $newCoverName = $request->cover->getClientOriginalName();
                 $request->cover->move(public_path('blog/tag/cover'), $newCoverName);
@@ -158,9 +142,6 @@ class BlogTagController extends Controller
             $newOG = $request->file('og_image');
 
             if ($newOG) {
-                $validatedData = $request->validate([
-                    // 'og_image' => 'og|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $newOGName = $request->og_image->getClientOriginalName();
                 $request->og_image->move(public_path('blog/tag/og'), $newOGName);
@@ -168,7 +149,6 @@ class BlogTagController extends Controller
                 $tag->og_image = $newOGName;
             }
 
-            // Update other fields of the request
             $tag->name = $request->input('name');
             $tag->slug = $request->input('slug');            
             $tag->description = $request->input('description');
@@ -185,19 +165,20 @@ class BlogTagController extends Controller
             $tag->thumb_alt_text = $request->input('thumb_alt_text');
             $tag->cover_alt_text = $request->input('cover_alt_text');
             $tag->og_img_alt_text = $request->input('og_img_alt_text');
+            $tag->is_index = $request->input('is_index');
+            $tag->is_follow = $request->input('is_follow');
+            $tag->is_featured = $request->input('is_featured');
 
             if (!is_null($request->input('status'))) {
                 $tag->status = $request->input('status');
-            }
+            }                        
             
             $tag->comment = $request->input('comment');
 
-            // Save the changes
             $tag->save();
 
-            // Perform any additional actions or redirect as needed
         } else {
-            // Handle the case when the record doesn't exist
+            
             Session::flash('update', __('There is a problem!'));
 
             return back();

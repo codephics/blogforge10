@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container">
-		<a class="navbar-brand" href="{{ route('blog.home') }}">
+		<a class="navbar-brand" href="{{ route('dashboard') }}">
 			BlogForge10
 		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,6 @@
 						<li><a class="dropdown-item" href="{{ route('blog.subcategories') }}">Manage Subcategories</a></li>
 						<li><a class="dropdown-item" href="{{ route('blog.sub-subcategories') }}">Manage Sub Subcategories</a></li>
 						<li><a class="dropdown-item" href="{{ route('blog.tag') }}">Manage Tags</a></li>
-						<li><a class="dropdown-item" href="{{ route('blog.comments') }}">Manage Comments</a></li>
 					</ul>
 				</li>				
 				<li class="nav-item"><a href="{{ route('blog.page.manage-pages') }}" class="nav-link">Pages</a></li>

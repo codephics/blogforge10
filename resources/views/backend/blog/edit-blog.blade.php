@@ -1,5 +1,4 @@
-@extends('backend.blog.skeleton.body')
-@section('content') @section('custom-head')
+@extends('backend.blog.skeleton.body') @section('content') @section('custom-head')
 <script src="https://cdn.tiny.cloud/1/m9g2pjluv64jkrzcnksdf4ur6nd9lvyrbatcjua3iazeof63/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
 
@@ -35,8 +34,7 @@
     @endif
 
     <form class="needs-validation" method="POST" action="{{ route('blog.update', $blog->id) }}" enctype="multipart/form-data" novalidate>
-        @csrf
-        @method('PUT')
+        @csrf @method('PUT')
         <div class="row">
             <div class="col-sm-9">
                 <div class="row">
@@ -60,12 +58,13 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="tags" class="form-label">Tags</label>
-                            <input class="form-control" list="datalistTag" name="tags" value="{{ $blog->tags }}" placeholder="Tag" />
-                            <datalist id="datalistTag">
+                            <p class="fs-6">{{ $blog->tags }}</p>
+                            <input type="text" name="tags" value="{{ $blog->tags }}" hidden />
+                            <select class="form-select" multiple aria-label="multiple select example" name="tags[]">
                                 @foreach($tags as $tag)
-                                <option value="{{ $tag->name }}"></option>
+                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                                 @endforeach
-                            </datalist>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -130,13 +129,13 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="youtube_iframe" class="form-label">Youtube Iframe</label>
-                            <textarea class="form-control" rows="2" name="youtube_iframe">{{ $blog->youtube_iframe }}</textarea>
+                            <textarea class="form-control" rows="3" name="youtube_iframe">{{ $blog->youtube_iframe }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="header_content" class="form-label">Header Content</label>
-                            <textarea class="form-control" rows="2" name="header_content">{{ $blog->header_content }}</textarea>
+                            <textarea class="form-control" rows="3" name="header_content">{{ $blog->header_content }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -144,13 +143,13 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="meta_title" class="form-label">Meta Title</label>
-                            <textarea class="form-control" id="meta_title" rows="2" name="meta_title">{{ $blog->meta_title }}</textarea>
+                            <textarea class="form-control" id="meta_title" rows="3" name="meta_title">{{ $blog->meta_title }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="meta_description" class="form-label">Meta Description</label>
-                            <textarea class="form-control" id="meta_description" rows="2" name="meta_description">{{ $blog->meta_description }}</textarea>
+                            <textarea class="form-control" id="meta_description" rows="3" name="meta_description">{{ $blog->meta_description }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -158,13 +157,13 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="facebook_meta_title" class="form-label">Facebook Meta Title</label>
-                            <textarea class="form-control" name="facebook_meta_title" rows="5">{{ $blog->facebook_meta_title }}</textarea>
+                            <textarea class="form-control" name="facebook_meta_title" rows="3">{{ $blog->facebook_meta_title }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="facebook_meta_description" class="form-label">Facebook Meta Description</label>
-                            <textarea class="form-control" name="facebook_meta_description" rows="5">{{ $blog->facebook_meta_description }}</textarea>
+                            <textarea class="form-control" name="facebook_meta_description" rows="3">{{ $blog->facebook_meta_description }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -172,13 +171,13 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="twitter_meta_title" class="form-label">Twitter Meta Title</label>
-                            <textarea class="form-control" name="twitter_meta_title" rows="5">{{ $blog->twitter_meta_title }}</textarea>
+                            <textarea class="form-control" name="twitter_meta_title" rows="3">{{ $blog->twitter_meta_title }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="twitter_meta_description" class="form-label">Twitter Meta Description</label>
-                            <textarea class="form-control" name="twitter_meta_description" rows="5">{{ $blog->twitter_meta_description }}</textarea>
+                            <textarea class="form-control" name="twitter_meta_description" rows="3">{{ $blog->twitter_meta_description }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -187,65 +186,60 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <label for="link" class="form-label">Link</label>
-                            <input type="text" class="form-control" name="link" placeholder="Link" disabled />
+                            <label class="form-label" for="content">Content?</label>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
-                            <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault" @if($blog->is_featured == 1) checked @endif>
-                                  <label class="form-check-label" for="featuredCheckDefault">Featured?</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_index" value="1" id="featuredCheckDefault" @if($blog->is_index == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Index?</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_follow" value="1" id="featuredCheckDefault" @if($blog->is_follow == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Follow?</label>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault" @if($blog->is_featured == 1) checked @endif>
+                                <label class="form-check-label" for="featuredCheckDefault">Featured?</label>
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label for="featured_image" class="form-label">Featured Image</label>
-                            <img src="{{ asset('template/blog/image/featured/' . $blog->featured_image) }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('template/blog/image/featured/' . $blog->featured_image) }}" class="img-thumbnail" alt="..." />
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="featured_img_alt_text" value="{{ $blog->featured_img_alt_text }}" placeholder="Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="featured-image" class="form-label">Featured Image</label>
                             <input class="form-control" type="file" name="featured_image" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="mb-3">
-                            <label for="file" class="form-label">Upload File</label>
-                            <input class="form-control" type="file" name="file" multiple />
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="og_image" class="form-label">OG</label>
-                            <img src="{{ asset('template/blog/image/og/' . $blog->og_image) }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('template/blog/image/og/' . $blog->og_image) }}" class="img-thumbnail" alt="..." />
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $blog->og_img_alt_text }}" placeholder="Alt Text" />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="og_image" class="form-label">Upload OG</label>
                             <input class="form-control" type="file" name="og_image" multiple />
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
-                            <label for="status" class="form-label">Status</label>
-                            <input class="form-control" list="datalistStatus" name="status" placeholder="@if($blog->status == 1) Published @else Draft @endif" />
-                            <datalist id="datalistStatus">
-                                <option value="1">Publish</option>
-                                <option value="0">Draft</option>
-                            </datalist>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupStatus">Status</label>
+                                <select class="form-select" id="inputGroupStatus" name="status">
+                                    @if($blog->status == 1)
+                                    <option value="1">Published</option>
+                                    <option value="0">Draft</option>
+                                    @else
+                                    <option value="0">Draft</option>
+                                    <option value="1">Publish</option>
+                                    @endif
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="comment" class="form-label">Comment</label>
                             <textarea class="form-control" id="custom-textarea" name="comment" rows="3">{{ $blog->comment }}</textarea>

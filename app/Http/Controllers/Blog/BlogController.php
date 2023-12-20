@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Blog\Blog;
 use App\Models\Blog\BlogTag;
-use App\Models\Blog\BlogSetting;
 use App\Models\Blog\BlogCategory;
 use App\Models\Blog\BlogSubcategory;
 use App\Models\Blog\BlogSubSubcategory;
@@ -40,18 +39,12 @@ class BlogController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'slug' => ['required', 'regex:/^[a-z]+$/'],
-        // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ], [
-        //     'slug.regex' => 'The :attribute field must contain only lowercase letters.'
-        // ]);
+        $tags = implode(', ', $request->tags);
 
         $blog = Blog::create([
             'title' => $request->title,
             'slug' => $request->slug,
-            'tags' => $request->tags,
+            'tags' => $tags,
             'author' => $request->author,
             'category_name' => $request->category_name,
             'subcategory_name' => $request->subcategory_name,
@@ -59,12 +52,15 @@ class BlogController extends Controller
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'youtube_iframe' => $request->youtube_iframe,
+            'header_content' => $request->header_content,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
             'facebook_meta_title' => $request->facebook_meta_title,
             'facebook_meta_description' => $request->facebook_meta_description,
             'twitter_meta_title' => $request->twitter_meta_title,
             'twitter_meta_description' => $request->twitter_meta_description,
+            'is_index' => $request->is_index,
+            'is_follow' => $request->is_follow,
             'is_featured' => $request->is_featured,
             'featured_img_alt_text' => $request->featured_img_alt_text,
             'og_img_alt_text' => $request->og_img_alt_text,
@@ -80,19 +76,13 @@ class BlogController extends Controller
             $blog->featured_image = $featuredImage;
         }
 
-        if ($request->hasFile('file')) {
-            $file = $request->file('file')->getClientOriginalName();
-            $request->file('file')->move(public_path('blog/file'), $file);
-            $blog->file = $file;
-        }
-
         if ($request->hasFile('og_image')) {
             $oGImage = $request->file('og_image')->getClientOriginalName();
             $request->file('og_image')->move(public_path('blog/image/og'), $oGImage);
             $blog->og_image = $oGImage;
         }
 
-        if ($request->hasFile('featured_image') || $request->hasFile('file') || $request->hasFile('og_image')) {
+        if ($request->hasFile('featured_image') || $request->hasFile('og_image')) {
             $blog->save();
         }
 
@@ -110,12 +100,17 @@ class BlogController extends Controller
 
     public function edit($id)
     {
+        $tags = BlogTag::all();
         $blog = Blog::findOrFail($id);
         $categories = BlogCategory::all();
         $subcategories = BlogSubcategory::all();
         $sub_subcategories = BlogSubSubcategory::all();
+
+        $selectedTags = array_map('trim', explode(',', $blog->tags));
         
         return view('backend.blog.edit-blog', [
+            'tags' => $tags,
+            'selectedTags' => $selectedTags,
             'blog' => $blog,
             'categories' => $categories,
             'subcategories' => $subcategories,
@@ -131,9 +126,6 @@ class BlogController extends Controller
             $featuredImage = $request->file('featured_image');
 
             if ($featuredImage) {
-                $validatedData = $request->validate([
-                    // 'featured_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $featuredImageName = $request->featured_image->getClientOriginalName();
                 $request->featured_image->move(public_path('blog/image/featured'), $featuredImageName);
@@ -141,25 +133,9 @@ class BlogController extends Controller
                 $blog->featured_image = $featuredImageName;
             }
 
-            $file = $request->file('file');
-
-            if ($file) {
-                $validatedData = $request->validate([
-                    // 'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
-
-                $Name = $request->file->getClientOriginalName();
-                $request->file->move(public_path('blog/file'), $Name);
-
-                $blog->file = $Name;
-            }
-
             $og = $request->file('og_image');
 
             if ($og) {
-                $validatedData = $request->validate([
-                    // 'og_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $ogImageName = $request->og_image->getClientOriginalName();
                 $request->og_image->move(public_path('blog/image/og'), $ogImageName);
@@ -167,10 +143,11 @@ class BlogController extends Controller
                 $blog->og_image = $ogImageName;
             }
 
-            // Update other fields of the request
+            $tags = implode(', ', (array) $request->tags);
+
             $blog->title = $request->input('title');
             $blog->slug = $request->input('slug');            
-            $blog->tags = $request->input('tags');
+            $blog->tags = $tags;
             $blog->author = $request->input('author');
             $blog->category_name = $request->input('category_name');
             $blog->subcategory_name = $request->input('subcategory_name');
@@ -178,28 +155,30 @@ class BlogController extends Controller
             $blog->short_description = $request->input('short_description');
             $blog->long_description = $request->input('long_description');
             $blog->youtube_iframe = $request->input('youtube_iframe');
+            $blog->header_content = $request->input('header_content');
             $blog->meta_title = $request->input('meta_title');
             $blog->meta_description = $request->input('meta_description');
             $blog->facebook_meta_title = $request->input('facebook_meta_title');
             $blog->facebook_meta_description = $request->input('facebook_meta_description');
             $blog->twitter_meta_title = $request->input('twitter_meta_title');
             $blog->twitter_meta_description = $request->input('twitter_meta_description');
+            $blog->is_index = $request->input('is_index');
+            $blog->is_follow = $request->input('is_follow');
             $blog->is_featured = $request->input('is_featured');
             $blog->featured_img_alt_text = $request->input('featured_img_alt_text');
             $blog->og_img_alt_text = $request->input('og_img_alt_text');
 
             if (!is_null($request->input('status'))) {
                 $blog->status = $request->input('status');
-            }
+            }                        
             
             $blog->comment = $request->input('comment');
 
-            // Save the changes
+            dd($blog);
+            
             $blog->save();
 
-            // Perform any additional actions or redirect as needed
         } else {
-            // Handle the case when the record doesn't exist
             Session::flash('update', __('There is a problem!'));
 
             return back();

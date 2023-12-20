@@ -134,12 +134,6 @@ class BlogPageController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        // $request->validate([
-        //     'email' => 'email',
-        // ]);
-
-        // dd($request);
-
         $page = BlogPage::create([
             'name' => $request->name,
             'title' => $request->title,
@@ -162,6 +156,9 @@ class BlogPageController extends Controller
             'breadcrumb_alt_text' => $request->breadcrumb_alt_text,
             'cover_alt_text' => $request->cover_alt_text,
             'og_img_alt_text' => $request->og_img_alt_text,
+            'is_index' => $request->is_index,
+            'is_follow' => $request->is_follow,
+            'is_featured' => $request->is_featured,
             'status' => $request->status,
             'comment' => $request->comment,
         ]);
@@ -231,9 +228,6 @@ class BlogPageController extends Controller
             $thumb = $request->file('thumb');
 
             if ($thumb) {
-                $validatedData = $request->validate([
-                    // 'thumb' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $thumbName = $request->thumb->getClientOriginalName();
                 $request->thumb->move(public_path('blog/page/image/thumb'), $thumbName);
@@ -244,9 +238,6 @@ class BlogPageController extends Controller
             $breadcrumb = $request->file('breadcrumb_image');
 
             if ($breadcrumb) {
-                $validatedData = $request->validate([
-                    // 'breadcrumb_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $breadcrumbName = $request->breadcrumb_image->getClientOriginalName();
                 $request->breadcrumb_image->move(public_path('blog/page/image/breadcrumb'), $breadcrumbName);
@@ -257,9 +248,6 @@ class BlogPageController extends Controller
             $cover = $request->file('cover_image');
 
             if ($cover) {
-                $validatedData = $request->validate([
-                    // 'cover_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $coverName = $request->cover_image->getClientOriginalName();
                 $request->cover_image->move(public_path('blog/page/image/cover'), $coverName);
@@ -270,9 +258,6 @@ class BlogPageController extends Controller
             $og = $request->file('og_image');
 
             if ($og) {
-                $validatedData = $request->validate([
-                    // 'og_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $ogImageName = $request->og_image->getClientOriginalName();
                 $request->og_image->move(public_path('blog/page/image/og'), $ogImageName);
@@ -280,7 +265,6 @@ class BlogPageController extends Controller
                 $page->og_image = $ogImageName;
             }
 
-            // Update other fields of the request
             $page->name = $request->input('name');
             $page->title = $request->input('title');
             $page->slug = $request->input('slug');            
@@ -302,18 +286,20 @@ class BlogPageController extends Controller
             $page->breadcrumb_alt_text = $request->input('breadcrumb_alt_text');
             $page->cover_alt_text = $request->input('cover_alt_text');
             $page->og_img_alt_text = $request->input('og_img_alt_text');
+            $page->is_index = $request->input('is_index');
+            $page->is_follow = $request->input('is_follow');
+            $page->is_featured = $request->input('is_featured');
 
             if (!is_null($request->input('status'))) {
                 $page->status = $request->input('status');
-            }
+            }                        
             
             $page->comment = $request->input('comment');
 
             $page->save();
 
-            // Perform any additional actions or redirect as needed
         } else {
-            // Handle the case when the record doesn't exist
+            
             Session::flash('update', __('There is a problem!'));
 
             return redirect()->back();

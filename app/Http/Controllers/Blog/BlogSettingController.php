@@ -13,16 +13,8 @@ use Session;
 
 class BlogSettingController extends Controller
 {
-
-
     public function store(Request $request): RedirectResponse
     {
-        // $request->validate([
-        //     'email' => 'email',
-        // ]);
-
-        // dd($request);
-
         $setting = BlogSetting::create([
             'title' => $request->title,
             'tagline' => $request->tagline,
@@ -122,9 +114,6 @@ class BlogSettingController extends Controller
             $favicon_apple = $request->file('favicon_apple');
 
             if ($favicon_apple) {
-                $validatedData = $request->validate([
-                    // 'favicon_apple' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $faviconAppleName = $request->favicon_apple->getClientOriginalName();
                 $request->favicon_apple->move(public_path('blog/setting'), $faviconAppleName);
@@ -135,9 +124,6 @@ class BlogSettingController extends Controller
             $favicon_32 = $request->file('favicon_32');
 
             if ($favicon_32) {
-                $validatedData = $request->validate([
-                    // 'favicon_32' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $favicon32Name = $request->favicon_32->getClientOriginalName();
                 $request->favicon_32->move(public_path('blog/setting'), $favicon32Name);
@@ -148,9 +134,6 @@ class BlogSettingController extends Controller
             $favicon_16 = $request->file('favicon_16');
 
             if ($favicon_16) {
-                $validatedData = $request->validate([
-                    // 'favicon_16' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $favicon16Name = $request->favicon_16->getClientOriginalName();
                 $request->favicon_16->move(public_path('blog/setting'), $favicon16Name);
@@ -161,9 +144,6 @@ class BlogSettingController extends Controller
             $logo = $request->file('logo');
 
             if ($logo) {
-                $validatedData = $request->validate([
-                    // 'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $logoName = $request->logo->getClientOriginalName();
                 $request->logo->move(public_path('blog/setting'), $logoName);
@@ -174,9 +154,6 @@ class BlogSettingController extends Controller
             $cover_image = $request->file('cover_image');
 
             if ($cover_image) {
-                $validatedData = $request->validate([
-                    // 'cover_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $coverImgName = $request->cover_image->getClientOriginalName();
                 $request->cover_image->move(public_path('blog/setting'), $coverImgName);
@@ -187,9 +164,6 @@ class BlogSettingController extends Controller
             $og = $request->file('og_image');
 
             if ($og) {
-                $validatedData = $request->validate([
-                    // 'og_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                ]);
 
                 $ogImageName = $request->og_image->getClientOriginalName();
                 $request->og_image->move(public_path('blog/setting'), $ogImageName);
@@ -197,7 +171,6 @@ class BlogSettingController extends Controller
                 $setting->og_image = $ogImageName;
             }
 
-            // Update other fields of the request
             $setting->title = $request->input('title');
             $setting->tagline = $request->input('tagline');
             $setting->about_in_short = $request->input('about_in_short');
@@ -233,12 +206,11 @@ class BlogSettingController extends Controller
             $setting->is_follow = $request->input('is_follow');
             
             $setting->comment = $request->input('comment');
-            // dd($setting);
+
             $setting->save();
 
-            // Perform any additional actions or redirect as needed
         } else {
-            // Handle the case when the record doesn't exist
+
             Session::flash('update', __('There is a problem!'));
 
             return redirect()->back();

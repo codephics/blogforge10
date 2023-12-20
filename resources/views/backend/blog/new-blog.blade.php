@@ -1,5 +1,4 @@
-@extends('backend.blog.skeleton.body')
-@section('content') @section('custom-head')
+@extends('backend.blog.skeleton.body') @section('content') @section('custom-head')
 <script src="https://cdn.tiny.cloud/1/m9g2pjluv64jkrzcnksdf4ur6nd9lvyrbatcjua3iazeof63/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
 
@@ -41,7 +40,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title *</label>
+                            <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" name="title" placeholder="Title" required />
                             <div class="valid-feedback">
                                 Looks good!
@@ -59,12 +58,11 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="tags" class="form-label">Tags</label>
-                            <input class="form-control" list="datalistCategory" name="tags" placeholder="Tags" />
-                            <datalist id="datalistCategory">
+                            <select class="form-select" multiple aria-label="multiple select example" name="tags[]">
                                 @foreach($tags as $tag)
-                                <option value="{{ $tag->name }}"></option>
+                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                                 @endforeach
-                            </datalist>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -186,17 +184,26 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <label for="link" class="form-label">Link</label>
-                            <input type="text" class="form-control" name="link" placeholder="Link" disabled />
+                            <label class="form-label" for="content">Content?</label>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_index" value="1" id="featuredCheckDefault" />
+                                <label class="form-check-label" for="featuredCheckDefault">Index?</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="is_follow" value="1" id="featuredCheckDefault" />
+                                <label class="form-check-label" for="featuredCheckDefault">Follow?</label>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
                             <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault">
-                                  <label class="form-check-label" for="featuredCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="is_featured" value="1" id="featuredCheckDefault" />
+                                <label class="form-check-label" for="featuredCheckDefault">
                                     Featured?
-                                  </label>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -211,12 +218,6 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <label for="file" class="form-label">Upload File</label>
-                            <input class="form-control" type="file" name="file" multiple />
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="mb-3">
                             <label for="og_image" class="form-label">Upload OG</label>
                             <input class="form-control" type="file" name="og_image" multiple />
                         </div>
@@ -225,13 +226,13 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <div class="mb-3">
-                            <label for="status" class="form-label">Status</label>
-                            <input class="form-control" list="datalistStatus" name="status" placeholder="Status" />
-                            <datalist id="datalistStatus">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupStatus">Status</label>
+                            <select class="form-select" id="inputGroupStatus" name="status">
+                                <option value="0">Choose...</option>
                                 <option value="1">Publish</option>
                                 <option value="0">Draft</option>
-                            </datalist>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -246,8 +247,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-primary">Publish</button>
-                <button type="submit" class="btn btn-primary">Draft</button>
-                <button type="submit" class="btn btn-secondary">Publish & Add Another</button>
             </div>
         </div>
     </form>
