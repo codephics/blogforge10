@@ -30,14 +30,6 @@ return new class extends Migration
             $table->string('telegram_url')->nullable();
             $table->string('tumblr_url')->nullable();
             $table->string('wechat_url')->nullable();
-            $table->text('youtube_iframe')->nullable();
-            $table->text('header_content')->nullable();
-            $table->string('meta_title', 255)->nullable();
-            $table->string('meta_description', 255)->nullable();
-            $table->string('facebook_meta_title', 255)->nullable();
-            $table->string('facebook_meta_description', 255)->nullable();
-            $table->string('twitter_meta_title', 255)->nullable();
-            $table->string('twitter_meta_description', 255)->nullable();
             $table->string('favicon_apple_alt_text', 255)->nullable();
             $table->string('favicon_apple', 255)->default('apple-touch-icon.png');
             $table->string('favicon_32_alt_text', 255)->nullable();
@@ -46,8 +38,6 @@ return new class extends Migration
             $table->string('favicon_16', 255)->default('favicon-16x16.png');
             $table->string('logo_alt_text', 255)->nullable();
             $table->string('logo', 255);
-            $table->string('cover_alt_text', 255)->nullable();
-            $table->string('cover_image', 255)->default('default-cover.png');
             $table->string('og_img_alt_text', 255)->nullable();
             $table->string('og_image', 255)->default('default-og.png');
             $table->tinyInteger('is_index')->default(0)->nullable();

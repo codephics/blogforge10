@@ -134,11 +134,13 @@ class BlogPageController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $keywords = implode(', ', $request->keywords);
+        
         $page = BlogPage::create([
             'name' => $request->name,
             'title' => $request->title,
             'slug' => $request->slug,
-            'keywords' => $request->keywords,
+            'keywords' => $keywords,
             'category_name' => $request->category_name,
             'subcategory_name' => $request->subcategory_name,
             'sub_subcategory_name' => $request->sub_subcategory_name,
@@ -265,10 +267,12 @@ class BlogPageController extends Controller
                 $page->og_image = $ogImageName;
             }
 
+            $keywords = implode(', ', (array) $request->keywords);
+
             $page->name = $request->input('name');
             $page->title = $request->input('title');
             $page->slug = $request->input('slug');            
-            $page->keywords = $request->input('keywords');
+            $page->keywords = $keywords;
             $page->category_name = $request->input('category_name');
             $page->subcategory_name = $request->input('subcategory_name');
             $page->sub_subcategory_name = $request->input('sub_subcategory_name');

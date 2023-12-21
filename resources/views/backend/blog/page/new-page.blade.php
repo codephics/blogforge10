@@ -24,16 +24,6 @@
         </div>
     </div>
 
-    @if(session()->has('message'))
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-success" role="alert">
-                {{ session('message') }}
-            </div>
-        </div>
-    </div>
-    @endif
-
     <form class="needs-validation" method="POST" action="{{ route('blog.page.new-page.store') }}" enctype="multipart/form-data" novalidate>
         @csrf
         <div class="row">

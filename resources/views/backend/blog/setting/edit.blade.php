@@ -186,62 +186,6 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="youtube_iframe" class="form-label">Youtube Iframe</label>
-                            <textarea class="form-control" rows="3" name="youtube_iframe">{{ $page->youtube_iframe }}</textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="header_content" class="form-label">Header Content</label>
-                            <textarea class="form-control" rows="3" name="header_content">{{ $page->header_content }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="meta_title" class="form-label">Meta Title</label>
-                            <textarea class="form-control" id="meta_title" rows="3" name="meta_title">{{ $page->meta_title }}</textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="meta_description" class="form-label">Meta Description</label>
-                            <textarea class="form-control" id="meta_description" rows="3" name="meta_description">{{ $page->meta_description }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="facebook_meta_title" class="form-label">Facebook Meta Title</label>
-                            <textarea class="form-control" id="facebook_meta_title" rows="3" name="facebook_meta_title">{{ $page->facebook_meta_title }}</textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="facebook_meta_description" class="form-label">Facebook Meta Description</label>
-                            <textarea class="form-control" id="facebook_meta_description" rows="3" name="facebook_meta_description">{{ $page->facebook_meta_description }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="twitter_meta_title" class="form-label">Twitter Meta Title</label>
-                            <textarea class="form-control" id="twitter_meta_title" rows="3" name="twitter_meta_title">{{ $page->twitter_meta_title }}</textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="twitter_meta_description" class="form-label">Twitter Meta Description</label>
-                            <textarea class="form-control" id="twitter_meta_description" rows="3" name="twitter_meta_description">{{ $page->twitter_meta_description }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
                             <img src="{{ asset('blog/setting/'.$page->logo) }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
@@ -254,15 +198,6 @@
                         <div class="mb-3">
                             <img src="{{ asset('blog/setting/'.$page->cover_image) }}" class="img-thumbnail" alt="...">
                         </div>
-                        <div class="mb-3">
-                            <input class="form-control" type="text" name="cover_alt_text" value="{{ $page->cover_alt_text }}" placeholder="Alt Text" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="cover_image" class="form-label">Cover</label>
-                            <input class="form-control" type="file" name="cover_image" />
-                        </div>
-
                         <div class="mb-3">
                             <img src="{{ asset('blog/setting/'.$page->og_image) }}" class="img-thumbnail" alt="...">
                         </div>
@@ -324,8 +259,6 @@
                                   <label class="form-check-label" for="featuredCheckDefault">Follow?</label>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="comment" class="form-label">Comment</label>
                             <textarea class="form-control" id="custom-textarea" name="comment" rows="3">{{ $page->comment }}</textarea>
@@ -359,62 +292,6 @@
                         <div class="mb-3">
                             <label for="tagline" class="form-label">Tagline</label>
                             <input type="text" class="form-control" name="tagline" placeholder="Tagline" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="youtube_iframe" class="form-label">Youtube Iframe</label>
-                            <textarea class="form-control" rows="3" name="youtube_iframe"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="header_content" class="form-label">Header Content</label>
-                            <textarea class="form-control" rows="3" name="header_content"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="meta_title" class="form-label">Meta Title</label>
-                            <textarea class="form-control" id="meta_title" rows="3" name="meta_title"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="meta_description" class="form-label">Meta Description</label>
-                            <textarea class="form-control" id="meta_description" rows="3" name="meta_description"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="facebook_meta_title" class="form-label">Facebook Meta Title</label>
-                            <textarea class="form-control" id="facebook_meta_title" rows="3" name="facebook_meta_title"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="facebook_meta_description" class="form-label">Facebook Meta Description</label>
-                            <textarea class="form-control" id="facebook_meta_description" rows="3" name="facebook_meta_description"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="twitter_meta_title" class="form-label">Twitter Meta Title</label>
-                            <textarea class="form-control" id="twitter_meta_title" rows="3" name="twitter_meta_title"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label for="twitter_meta_description" class="form-label">Twitter Meta Description</label>
-                            <textarea class="form-control" id="twitter_meta_description" rows="3" name="twitter_meta_description"></textarea>
                         </div>
                     </div>
                 </div>
@@ -465,15 +342,6 @@
                         <div class="mb-3">
                             <img src="{{ asset('blog/setting/') }}" class="img-thumbnail" alt="...">
                         </div>
-                        <div class="mb-3">
-                            <input class="form-control" type="text" name="cover_alt_text" value="" placeholder="Alt Text" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="cover_image" class="form-label">Cover</label>
-                            <input class="form-control" type="file" name="cover_image" />
-                        </div>
-
                         <div class="mb-3">
                             <img src="{{ asset('blog/setting/') }}" class="img-thumbnail" alt="...">
                         </div>
