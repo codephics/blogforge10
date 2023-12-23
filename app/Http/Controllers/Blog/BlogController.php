@@ -173,8 +173,6 @@ class BlogController extends Controller
             }                        
             
             $blog->comment = $request->input('comment');
-
-            dd($blog);
             
             $blog->save();
 

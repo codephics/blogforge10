@@ -9,7 +9,7 @@ use App\Http\Controllers\Blog\BlogCategoryController;
 use App\Http\Controllers\Blog\BlogTagController;
 use App\Http\Controllers\Blog\BlogPageController;
 use App\Http\Controllers\Blog\BlogSettingController;
-use App\Http\Controllers\Blog\SitemapController;
+use App\Http\Controllers\Blog\BlogSitemapController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +38,7 @@ Route::get('/license', [BlogPageController::class, 'license'])->name('blog.licen
 Route::get('/404', [BlogPageController::class, 'error404'])->name('blog.404');
 
 // Sitemap
-Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('blog.sitemap');
+Route::get('/sitemap.xml', [BlogSitemapController::class, 'index'])->name('blog.sitemap');
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
@@ -88,9 +88,6 @@ Route::post('/blog/new-tag/store', [BlogTagController::class, 'store'])->middlew
 Route::get('/blog/edit-tag/{id}', [BlogTagController::class, 'edit'])->middleware(['auth', 'verified'])->name('blog.tag.edit');
 Route::put('/blog/update-tag/{id}', [BlogTagController::class, 'update'])->middleware(['auth', 'verified'])->name('blog.tag.update');
 Route::delete('/blog/destroy-tag/{id}', [BlogTagController::class, 'destroy'])->middleware(['auth', 'verified'])->name('blog.tag.destroy');
-
-// Blog -> Comments
-Route::get('/blog/comments', [BlogTagController::class, 'show'])->middleware(['auth', 'verified'])->name('blog.comments');
 
 // Pages
 Route::get('blog/manage-pages', [BlogPageController::class, 'show'])->middleware(['auth', 'verified'])->name('blog.page.manage-pages');

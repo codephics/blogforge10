@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string('wechat_url')->nullable();
             $table->string('favicon_apple_alt_text', 255)->nullable();
             $table->string('favicon_apple', 255)->default('apple-touch-icon.png');
+            $table->string('favicon_alt_text', 255)->nullable();
+            $table->string('favicon', 255)->default('favicon.png');
             $table->string('favicon_32_alt_text', 255)->nullable();
             $table->string('favicon_32', 255)->nullable()->default('favicon-32x32.png');
             $table->string('favicon_16_alt_text', 255)->nullable();
@@ -51,6 +53,9 @@ return new class extends Migration
                 'title' => 'BlogForge10',
                 'tagline' => 'Elevate Your Blogging Experience with BlogForge10.',
                 'about_in_short' => 'Discover BlogForge10 🚀 - Your ultimate blogging companion. Streamline content creation, ensure security, and enjoy cross-platform flexibility. Unleash optimized performance and gain insights with analytics. Join us at codephics.com for a simplified, powerful blogging experience!',
+                'facebook_url' => 'https://facebook.com/codephics',
+                'twitter_url' => 'https://twitter.com/codephics',
+                'instagram_url' => 'https://instagram.com/codephics',
             ],
         ]);
     }

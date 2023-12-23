@@ -7,14 +7,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<!-- Bootstrap -->
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/js/fontawesome-6.4.0.js') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('public/blog/css/bootstrap.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('public/blog/js/fontawesome-6.4.0.js') }}">
 
 		<title>{{ $page->meta_title }}</title>
 
-		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('blog/setting/' . $setting->favicon_apple) }}" />
-		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('blog/setting/' . $setting->favicon_32) }}" />
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('blog/setting/' . $setting->favicon_16) }}" />
+		<link rel="favicon" sizes="48x48" href="{{ asset('blog/image/setting/' . $setting->favicon) }}" />
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('blog/image/setting/' . $setting->favicon_apple) }}" />
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('blog/image/setting/' . $setting->favicon_32) }}" />
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('blog/image/setting/' . $setting->favicon_16) }}" />
 
 		<!-- Custom Head -->
 		@yield('custom-head')
@@ -44,6 +45,11 @@
 						@if(session()->has('success'))
 						<div class="alert alert-success alert-dismissible fade show" role="alert">
 							{{ session('success') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					    @elseif(session()->has('delete'))
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							{{ session('error') }}
 							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 						</div>
 					    @elseif(session()->has('error'))

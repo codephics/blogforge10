@@ -186,20 +186,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/'.$page->logo) }}" class="img-thumbnail" alt="...">
-                        </div>
-                        <div class="mb-3">
-                            <input class="form-control" type="text" name="logo_alt_text" value="{{ $page->logo_alt_text }}" placeholder="Alt Text" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="logo" class="form-label">Logo</label>
-                            <input class="form-control" type="file" name="logo" />
-                        </div>
-                        <div class="mb-3">
-                            <img src="{{ asset('blog/setting/'.$page->cover_image) }}" class="img-thumbnail" alt="...">
-                        </div>
-                        <div class="mb-3">
-                            <img src="{{ asset('blog/setting/'.$page->og_image) }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/'.$page->og_image) }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $page->og_img_alt_text }}" placeholder="Alt Text" />
@@ -208,10 +195,30 @@
                             <label for="og_image" class="form-label">Upload OG</label>
                             <input class="form-control" type="file" name="og_image" multiple />
                         </div>
+                        <div class="mb-3">
+                            <img src="{{ asset('blog/image/setting/'.$page->favicon) }}" class="img-thumbnail" alt="...">
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="favicon_alt_text" value="{{ $page->favicon_apple_alt_text }}" placeholder="Alt Text" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="favicon" class="form-label">Favicon</label>
+                            <input class="form-control" type="file" name="favicon" />
+                        </div>
+                        <div class="mb-3">
+                            <img src="{{ asset('blog/image/setting/'.$page->favicon_16) }}" class="img-thumbnail" alt="...">
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="favicon_16_alt_text" value="{{ $page->favicon_16_alt_text }}" placeholder="Alt Text" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="favicon_16" class="form-label">Favicon x 16</label>
+                            <input class="form-control" type="file" name="favicon_16" />
+                        </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/'.$page->favicon_apple) }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/'.$page->favicon_apple) }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="favicon_apple_alt_text" value="{{ $page->favicon_apple_alt_text }}" placeholder="Alt Text" />
@@ -221,7 +228,7 @@
                             <input class="form-control" type="file" name="favicon_apple" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/'.$page->favicon_32) }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/'.$page->favicon_32) }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="favicon_32_alt_text" value="{{ $page->favicon_32_alt_text }}" placeholder="Alt Text" />
@@ -229,16 +236,6 @@
                         <div class="mb-3">
                             <label for="favicon_32" class="form-label">Favicon x 32</label>
                             <input class="form-control" type="file" name="favicon_32" />
-                        </div>
-                        <div class="mb-3">
-                            <img src="{{ asset('blog/setting/'.$page->favicon_16) }}" class="img-thumbnail" alt="...">
-                        </div>
-                        <div class="mb-3">
-                            <input class="form-control" type="text" name="favicon_16_alt_text" value="{{ $page->favicon_16_alt_text }}" placeholder="Alt Text" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="favicon_16" class="form-label">Favicon x 16</label>
-                            <input class="form-control" type="file" name="favicon_16" />
                         </div>
                     </div>
                 </div>
@@ -258,6 +255,16 @@
                                   <input class="form-check-input" type="checkbox" name="is_follow" value="1" id="featuredCheckDefault" @if($page->is_follow == 1) checked @endif>
                                   <label class="form-check-label" for="featuredCheckDefault">Follow?</label>
                             </div>
+                        </div>
+                        <div class="mb-3">
+                            <img src="{{ asset('blog/image/setting/'.$page->logo) }}" class="img-thumbnail" alt="...">
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="logo_alt_text" value="{{ $page->logo_alt_text }}" placeholder="Alt Text" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="logo" class="form-label">Logo</label>
+                            <input class="form-control" type="file" name="logo" />
                         </div>
                         <div class="mb-3">
                             <label for="comment" class="form-label">Comment</label>
@@ -298,7 +305,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/') }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/') }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="favicon_apple_alt_text" value="" placeholder="Alt Text" />
@@ -308,7 +315,7 @@
                             <input class="form-control" type="file" name="favicon_apple" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/') }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/') }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="favicon_32_alt_text" value="" placeholder="Alt Text" />
@@ -318,7 +325,7 @@
                             <input class="form-control" type="file" name="favicon_32" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/') }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/') }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="favicon_16_alt_text" value="" placeholder="Alt Text" />
@@ -330,7 +337,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/') }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/') }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="logo_alt_text" value="" placeholder="Alt Text" />
@@ -340,10 +347,10 @@
                             <input class="form-control" type="file" name="logo" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/') }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/') }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/setting/') }}" class="img-thumbnail" alt="...">
+                            <img src="{{ asset('blog/image/setting/') }}" class="img-thumbnail" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="" placeholder="Alt Text" />

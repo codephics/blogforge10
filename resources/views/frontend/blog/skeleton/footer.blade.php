@@ -6,6 +6,7 @@
 						<a class="nav-link" href="{{ route('blog.privacy-policy') }}">Privacy Policy</a>
 						<a class="nav-link" href="{{ route('blog.terms-of-service') }}">Terms of Service</a>
 						<a class="nav-link" href="{{ route('blog.license') }}">Licenses</a>
+						<a class="nav-link" href="{{ route('blog.sitemap') }}">Sitemap</a>
 					</nav>
 				</div>
 			</div>

@@ -169,25 +169,25 @@ class BlogPageController extends Controller
 
         if ($request->hasFile('thumb')) {
             $thumb = $request->file('thumb')->getClientOriginalName();
-            $request->file('thumb')->move(public_path('blog/page/image/thumb'), $thumb);
+            $request->file('thumb')->move(public_path('blog/image/page/thumb'), $thumb);
             $page->thumb = $thumb;
         }
 
         if ($request->hasFile('breadcrumb_image')) {
             $breadcrumbImage = $request->file('breadcrumb_image')->getClientOriginalName();
-            $request->file('breadcrumb_image')->move(public_path('blog/page/image/breadcrumb'), $breadcrumbImage);
+            $request->file('breadcrumb_image')->move(public_path('blog/image/page/breadcrumb'), $breadcrumbImage);
             $page->breadcrumb_image = $breadcrumbImage;
         }
 
         if ($request->hasFile('cover_image')) {
             $coverImage = $request->file('cover_image')->getClientOriginalName();
-            $request->file('cover_image')->move(public_path('blog/page/image/cover'), $coverImage);
+            $request->file('cover_image')->move(public_path('blog/image/page/cover'), $coverImage);
             $page->cover_image = $coverImage;
         }
 
         if ($request->hasFile('og_image')) {
             $oGImage = $request->file('og_image')->getClientOriginalName();
-            $request->file('og_image')->move(public_path('blog/page/image/og'), $oGImage);
+            $request->file('og_image')->move(public_path('blog/image/page/og'), $oGImage);
             $page->og_image = $oGImage;
         }
 
@@ -232,7 +232,7 @@ class BlogPageController extends Controller
             if ($thumb) {
 
                 $thumbName = $request->thumb->getClientOriginalName();
-                $request->thumb->move(public_path('blog/page/image/thumb'), $thumbName);
+                $request->thumb->move(public_path('blog/image/page/thumb'), $thumbName);
 
                 $page->thumb = $thumbName;
             }
@@ -242,7 +242,7 @@ class BlogPageController extends Controller
             if ($breadcrumb) {
 
                 $breadcrumbName = $request->breadcrumb_image->getClientOriginalName();
-                $request->breadcrumb_image->move(public_path('blog/page/image/breadcrumb'), $breadcrumbName);
+                $request->breadcrumb_image->move(public_path('blog/image/page/breadcrumb'), $breadcrumbName);
 
                 $page->breadcrumb_image = $breadcrumbName;
             }
@@ -252,7 +252,7 @@ class BlogPageController extends Controller
             if ($cover) {
 
                 $coverName = $request->cover_image->getClientOriginalName();
-                $request->cover_image->move(public_path('blog/page/image/cover'), $coverName);
+                $request->cover_image->move(public_path('blog/image/page/cover'), $coverName);
 
                 $page->cover_image = $coverName;
             }
@@ -262,7 +262,7 @@ class BlogPageController extends Controller
             if ($og) {
 
                 $ogImageName = $request->og_image->getClientOriginalName();
-                $request->og_image->move(public_path('blog/page/image/og'), $ogImageName);
+                $request->og_image->move(public_path('blog/image/page/og'), $ogImageName);
 
                 $page->og_image = $ogImageName;
             }

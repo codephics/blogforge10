@@ -111,7 +111,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/tag/icon/' . $tag->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/image/tag/icon/' . $tag->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="icon_alt_text" value="{{ $tag->icon_alt_text }}" placeholder="Alt Text" />
@@ -121,7 +121,7 @@
                             <input class="form-control" type="file" name="icon" id="icon" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/tag/thumb/' . $tag->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/image/tag/thumb/' . $tag->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="thumb_alt_text" value="{{ $tag->thumb_alt_text }}" placeholder="Alt Text" />
@@ -131,7 +131,7 @@
                             <input class="form-control" type="file" name="thumb" id="thumb" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/tag/cover/' . $tag->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/image/tag/cover/' . $tag->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="cover_alt_text" value="{{ $tag->cover_alt_text }}" placeholder="Alt Text" />
@@ -141,7 +141,7 @@
                             <input class="form-control" type="file" name="cover" id="cover" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/tag/og/' . $tag->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/image/tag/og/' . $tag->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $tag->og_img_alt_text }}" placeholder="Alt Text" />

@@ -76,7 +76,7 @@
                 <tbody>
                     @foreach ($sub_subcategories as $sub_subcategory)
                     <tr>
-                        <td><img src="{{ asset('blog/category/subcategory/sub-subcategory/icon/' . $sub_subcategory->icon) }}" class="" alt="..." height="42" width="42" /></td>
+                        <td><img src="{{ asset('blog/image/category/subcategory/sub-subcategory/icon/' . $sub_subcategory->icon) }}" class="" alt="..." height="42" width="42" /></td>
                         <td>{{ $sub_subcategory->subcategory_name }}</td>
                         <td>{{ $sub_subcategory->sub_subcategory_name }}</td>
                         <td>{{ $sub_subcategory->slug }}</td>

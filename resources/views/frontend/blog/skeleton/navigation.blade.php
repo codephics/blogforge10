@@ -63,7 +63,7 @@
 			    <div class="container">
 			    	@if($setting->title && $setting->logo)
 				    <a href="{{ route('blog.home') }}" class="navbar-brand d-flex align-items-center">
-					    <img src="{{ asset('blog/setting/' . $setting['logo']) }}" width="20" height="20" alt="{{ $setting->logo_alt_text }}">
+					    <img src="{{ asset('blog/image/setting/' . $setting['logo']) }}" width="20" height="20" alt="{{ $setting->logo_alt_text }}">
 				    </a>
 				    @elseif($setting->title)
 				    <a href="{{ route('blog.home') }}" class="navbar-brand d-flex align-items-center">

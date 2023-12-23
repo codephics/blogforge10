@@ -135,7 +135,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/category/subcategory/sub-subcategory/icon/' . $sub_subcategory->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/image/category/subcategory/sub-subcategory/icon/' . $sub_subcategory->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="icon_alt_text" value="{{ $sub_subcategory->icon_alt_text }}" placeholder="Alt Text" />
@@ -147,7 +147,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/category/subcategory/sub-subcategory/thumb/' . $sub_subcategory->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/image/category/subcategory/sub-subcategory/thumb/' . $sub_subcategory->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="thumb_alt_text" value="{{ $sub_subcategory->thumb_alt_text }}" placeholder="Alt Text" />
@@ -159,7 +159,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/category/subcategory/sub-subcategory/cover/' . $sub_subcategory->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/image/category/subcategory/sub-subcategory/cover/' . $sub_subcategory->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="cover_alt_text" value="{{ $sub_subcategory->cover_alt_text }}" placeholder="Alt Text" />
@@ -171,7 +171,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/category/subcategory/sub-subcategory/og/' . $sub_subcategory->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/image/category/subcategory/sub-subcategory/og/' . $sub_subcategory->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $sub_subcategory->og_img_alt_text }}" placeholder="Alt Text" />

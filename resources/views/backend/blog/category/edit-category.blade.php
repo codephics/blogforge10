@@ -122,7 +122,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="mb-3">
-                            <img src="{{ asset('blog/category/icon/' . $category->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/image/category/icon/' . $category->icon) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="icon_alt_text" value="{{ $category->icon_alt_text }}" placeholder="Alt Text" />
@@ -132,7 +132,7 @@
                             <input class="form-control" type="file" name="icon" id="icon" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/category/thumb/' . $category->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
+                            <img src="{{ asset('blog/image/category/thumb/' . $category->thumb) }}" class="img-thumbnail" height="85" width="85" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="thumb_alt_text" value="{{ $category->thumb_alt_text }}" placeholder="Alt Text" />
@@ -142,7 +142,7 @@
                             <input class="form-control" type="file" name="thumb" id="thumb" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/category/cover/' . $category->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/image/category/cover/' . $category->cover) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="cover_alt_text" value="{{ $category->cover_alt_text }}" placeholder="Alt Text" />
@@ -152,7 +152,7 @@
                             <input class="form-control" type="file" name="cover" id="cover" />
                         </div>
                         <div class="mb-3">
-                            <img src="{{ asset('blog/category/og/' . $category->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
+                            <img src="{{ asset('blog/image/category/og/' . $category->og_image) }}" class="img-thumbnail" height="630" width="630" alt="...">
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $category->og_img_alt_text }}" placeholder="Alt Text" />

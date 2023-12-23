@@ -9,7 +9,7 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="{{ $page->facebook_meta_title }}" />
 		<meta property="og:description" content="{{ $page->facebook_meta_description }}" />
-		<meta property="og:image" content="{{ asset('blog/setting/' . $page->og_image) }}" />
+		<meta property="og:image" content="{{ asset('blog/image/setting/' . $page->og_image) }}" />
 		<meta property="og:image:alt" content="" />
 		<meta property="og:url" content="{{ url()->full() }}" />
 
@@ -23,7 +23,7 @@
 		<meta property="twitter:domain" content="" />
 		<meta name="twitter:title" content="{{ $page->twitter_meta_title }}" />
 		<meta name="twitter:description" content="{{ $page->twitter_meta_description }}" />
-		<meta name="twitter:image" content="{{ asset('blog/setting/' . $page->og_image) }}" />
+		<meta name="twitter:image" content="{{ asset('blog/image/setting/' . $page->og_image) }}" />
 		<meta property="twitter:url" content="{{ url()->full() }}" />
 
 		@if($page->is_index == 1 && $page->is_follow == 1)

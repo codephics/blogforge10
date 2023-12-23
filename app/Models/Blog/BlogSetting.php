@@ -32,6 +32,8 @@ class BlogSetting extends Model
         'telegram_url',
         'tumblr_url',
         'wechat_url',
+        'favicon_alt_text',
+        'favicon',
         'favicon_apple_alt_text',
         'favicon_apple',
         'favicon_32_alt_text',

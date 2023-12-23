@@ -57,25 +57,25 @@ class BlogTagController extends Controller
 
         if ($request->hasFile('icon')) {
             $icon = $request->file('icon')->getClientOriginalName();
-            $request->file('icon')->move(public_path('blog/tag/icon'), $icon);
+            $request->file('icon')->move(public_path('blog/image/tag/icon'), $icon);
             $tag->icon = $icon;
         }
 
         if ($request->hasFile('thumb')) {
             $thumb = $request->file('thumb')->getClientOriginalName();
-            $request->file('thumb')->move(public_path('blog/tag/thumb'), $thumb);
+            $request->file('thumb')->move(public_path('blog/image/tag/thumb'), $thumb);
             $tag->thumb = $thumb;
         }
 
         if ($request->hasFile('cover')) {
             $cover = $request->file('cover')->getClientOriginalName();
-            $request->file('cover')->move(public_path('blog/tag/cover'), $cover);
+            $request->file('cover')->move(public_path('blog/image/tag/cover'), $cover);
             $tag->cover = $cover;
         }
 
         if ($request->hasFile('og_image')) {
             $oGImage = $request->file('og_image')->getClientOriginalName();
-            $request->file('og_image')->move(public_path('blog/tag/og'), $oGImage);
+            $request->file('og_image')->move(public_path('blog/image/tag/og'), $oGImage);
             $tag->og_image = $oGImage;
         }
 
@@ -114,7 +114,7 @@ class BlogTagController extends Controller
             if ($newIcon) {
 
                 $newIconName = $request->icon->getClientOriginalName();
-                $request->icon->move(public_path('blog/tag/icon'), $newIconName);
+                $request->icon->move(public_path('blog/image/tag/icon'), $newIconName);
 
                 $tag->icon = $newIconName;
             }
@@ -124,7 +124,7 @@ class BlogTagController extends Controller
             if ($newThumb) {
 
                 $newThumbName = $request->thumb->getClientOriginalName();
-                $request->thumb->move(public_path('blog/tag/thumb'), $newThumbName);
+                $request->thumb->move(public_path('blog/image/tag/thumb'), $newThumbName);
 
                 $tag->thumb = $newThumbName;
             }
@@ -134,7 +134,7 @@ class BlogTagController extends Controller
             if ($newCover) {
 
                 $newCoverName = $request->cover->getClientOriginalName();
-                $request->cover->move(public_path('blog/tag/cover'), $newCoverName);
+                $request->cover->move(public_path('blog/image/tag/cover'), $newCoverName);
 
                 $tag->cover = $newCoverName;
             }
@@ -144,7 +144,7 @@ class BlogTagController extends Controller
             if ($newOG) {
 
                 $newOGName = $request->og_image->getClientOriginalName();
-                $request->og_image->move(public_path('blog/tag/og'), $newOGName);
+                $request->og_image->move(public_path('blog/image/tag/og'), $newOGName);
 
                 $tag->og_image = $newOGName;
             }

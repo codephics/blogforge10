@@ -33,19 +33,11 @@ class BlogSettingController extends Controller
             'telegram_url' => $request->telegram_url,
             'tumblr_url' => $request->tumblr_url,
             'wechat_url' => $request->wechat_url,
-            'youtube_iframe' => $request->youtube_iframe,
-            'header_content' => $request->header_content,
-            'meta_title' => $request->meta_title,
-            'meta_description' => $request->meta_description,
-            'facebook_meta_title' => $request->facebook_meta_title,
-            'facebook_meta_description' => $request->facebook_meta_description,
-            'twitter_meta_title' => $request->twitter_meta_title,
-            'twitter_meta_description' => $request->twitter_meta_description,
+            'favicon_alt_text' => $request->favicon_alt_text,
             'favicon_apple_alt_text' => $request->favicon_apple_alt_text,
             'favicon_32_alt_text' => $request->favicon_32_alt_text,
             'favicon_16_alt_text' => $request->favicon_16_alt_text,
             'logo_alt_text' => $request->logo_alt_text,
-            'cover_alt_text' => $request->cover_alt_text,
             'og_img_alt_text' => $request->og_img_alt_text,
             'is_index' => $request->is_index,
             'is_follow' => $request->is_follow,
@@ -54,43 +46,43 @@ class BlogSettingController extends Controller
 
         $setting->save();
 
+        if ($request->hasFile('favicon')) {
+            $faviconName = $request->file('favicon')->getClientOriginalName();
+            $request->file('favicon')->move(public_path('blog/image/setting'), $faviconName);
+            $setting->favicon = $faviconName;
+        }
+
         if ($request->hasFile('favicon_apple')) {
             $faviconAppleName = $request->file('favicon_apple')->getClientOriginalName();
-            $request->file('favicon_apple')->move(public_path('blog/setting'), $faviconAppleName);
+            $request->file('favicon_apple')->move(public_path('blog/image/setting'), $faviconAppleName);
             $setting->favicon_apple = $faviconAppleName;
         }
 
         if ($request->hasFile('favicon_32')) {
             $favicon32Name = $request->file('favicon_32')->getClientOriginalName();
-            $request->file('favicon_32')->move(public_path('blog/setting'), $favicon32Name);
+            $request->file('favicon_32')->move(public_path('blog/image/setting'), $favicon32Name);
             $setting->favicon_32 = $favicon32Name;
         }
 
         if ($request->hasFile('favicon_16')) {
             $favicon16Name = $request->file('favicon_16')->getClientOriginalName();
-            $request->file('favicon_16')->move(public_path('blog/setting'), $favicon16Name);
+            $request->file('favicon_16')->move(public_path('blog/image/setting'), $favicon16Name);
             $setting->favicon_16 = $favicon16Name;
         }
 
         if ($request->hasFile('logo')) {
             $logoName = $request->file('logo')->getClientOriginalName();
-            $request->file('logo')->move(public_path('blog/setting'), $logoName);
+            $request->file('logo')->move(public_path('blog/image/setting'), $logoName);
             $setting->logo = $logoName;
-        }
-
-        if ($request->hasFile('cover_image')) {
-            $coverImage = $request->file('cover_image')->getClientOriginalName();
-            $request->file('cover_image')->move(public_path('blog/setting'), $coverImage);
-            $setting->cover_image = $coverImage;
         }
 
         if ($request->hasFile('og_image')) {
             $oGImage = $request->file('og_image')->getClientOriginalName();
-            $request->file('og_image')->move(public_path('blog/setting'), $oGImage);
+            $request->file('og_image')->move(public_path('blog/image/setting'), $oGImage);
             $setting->og_image = $oGImage;
         }
 
-        if ($request->hasFile('favicon_apple') || $request->hasFile('favicon_32') || $request->hasFile('favicon_16') || $request->hasFile('logo') || $request->hasFile('cover_image') || $request->hasFile('og_image')) {
+        if ($request->hasFile('favicon') || $request->hasFile('favicon_apple') || $request->hasFile('favicon_32') || $request->hasFile('favicon_16') || $request->hasFile('logo') || $request->hasFile('cover_image') || $request->hasFile('og_image')) {
             $setting->save();
         }
 
@@ -111,12 +103,22 @@ class BlogSettingController extends Controller
         $setting = BlogSetting::first();
 
         if ($setting) {
+            $favicon = $request->file('favicon');
+
+            if ($favicon) {
+
+                $faviconName = $request->favicon->getClientOriginalName();
+                $request->favicon->move(public_path('blog/image/setting'), $faviconName);
+
+                $setting->favicon = $faviconName;
+            }
+
             $favicon_apple = $request->file('favicon_apple');
 
             if ($favicon_apple) {
 
                 $faviconAppleName = $request->favicon_apple->getClientOriginalName();
-                $request->favicon_apple->move(public_path('blog/setting'), $faviconAppleName);
+                $request->favicon_apple->move(public_path('blog/image/setting'), $faviconAppleName);
 
                 $setting->favicon_apple = $faviconAppleName;
             }
@@ -126,7 +128,7 @@ class BlogSettingController extends Controller
             if ($favicon_32) {
 
                 $favicon32Name = $request->favicon_32->getClientOriginalName();
-                $request->favicon_32->move(public_path('blog/setting'), $favicon32Name);
+                $request->favicon_32->move(public_path('blog/image/setting'), $favicon32Name);
 
                 $setting->favicon_32 = $favicon32Name;
             }
@@ -136,7 +138,7 @@ class BlogSettingController extends Controller
             if ($favicon_16) {
 
                 $favicon16Name = $request->favicon_16->getClientOriginalName();
-                $request->favicon_16->move(public_path('blog/setting'), $favicon16Name);
+                $request->favicon_16->move(public_path('blog/image/setting'), $favicon16Name);
 
                 $setting->favicon_16 = $favicon16Name;
             }
@@ -146,19 +148,9 @@ class BlogSettingController extends Controller
             if ($logo) {
 
                 $logoName = $request->logo->getClientOriginalName();
-                $request->logo->move(public_path('blog/setting'), $logoName);
+                $request->logo->move(public_path('blog/image/setting'), $logoName);
 
                 $setting->logo = $logoName;
-            }
-
-            $cover_image = $request->file('cover_image');
-
-            if ($cover_image) {
-
-                $coverImgName = $request->cover_image->getClientOriginalName();
-                $request->cover_image->move(public_path('blog/setting'), $coverImgName);
-
-                $setting->cover_image = $coverImgName;
             }
 
             $og = $request->file('og_image');
@@ -166,7 +158,7 @@ class BlogSettingController extends Controller
             if ($og) {
 
                 $ogImageName = $request->og_image->getClientOriginalName();
-                $request->og_image->move(public_path('blog/setting'), $ogImageName);
+                $request->og_image->move(public_path('blog/image/setting'), $ogImageName);
 
                 $setting->og_image = $ogImageName;
             }
@@ -188,19 +180,11 @@ class BlogSettingController extends Controller
             $setting->telegram_url = $request->input('telegram_url');
             $setting->tumblr_url = $request->input('tumblr_url');
             $setting->wechat_url = $request->input('wechat_url');
-            $setting->youtube_iframe = $request->input('youtube_iframe');
-            $setting->header_content = $request->input('header_content');
-            $setting->meta_title = $request->input('meta_title');
-            $setting->meta_description = $request->input('meta_description');
-            $setting->facebook_meta_title = $request->input('facebook_meta_title');
-            $setting->facebook_meta_description = $request->input('facebook_meta_description');
-            $setting->twitter_meta_title = $request->input('twitter_meta_title');
-            $setting->twitter_meta_description = $request->input('twitter_meta_description');
+            $setting->favicon_alt_text = $request->input('favicon_alt_text');
             $setting->favicon_apple_alt_text = $request->input('favicon_apple_alt_text');
             $setting->favicon_32_alt_text = $request->input('favicon_32_alt_text');
             $setting->favicon_16_alt_text = $request->input('favicon_16_alt_text');
             $setting->logo_alt_text = $request->input('logo_alt_text');
-            $setting->cover_alt_text = $request->input('cover_alt_text');
             $setting->og_img_alt_text = $request->input('og_img_alt_text');
             $setting->is_index = $request->input('is_index');
             $setting->is_follow = $request->input('is_follow');
