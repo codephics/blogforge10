@@ -70,7 +70,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="author" class="form-label">Author</label>
-                            <input type="text" class="form-control" name="author" value="{{ $blog->author }}" placeholder="Author" />
+                            <input type="text" class="form-control" name="author" value="@if ($blog->author) {{ $blog->author }} @else {{ Auth::user()->name }} @endif" placeholder="Author" />
                         </div>
                     </div>
                 </div>
