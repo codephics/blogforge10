@@ -39,7 +39,14 @@ class BlogController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $tags = implode(', ', $request->tags);
+        if (is_array($request->tags)) {
+            
+            $tags = implode(', ', $request->tags);
+            
+        } else {
+            
+            $tags = $request->tags;
+        }
 
         $blog = Blog::create([
             'title' => $request->title,
