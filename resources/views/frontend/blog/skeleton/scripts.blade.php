@@ -1,2 +1,2 @@
 	<!-- JSScript -->
-	<script type="text/javascript" src="{{ asset('public/blog/js/bootstrap.bundle.min.js') }}"></script>
+	@vite(['resources/js/bootstrap.bundle.min.js'])

@@ -7,8 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<!-- Bootstrap -->
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/blog/css/bootstrap.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/blog/js/fontawesome-6.4.0.js') }}">
+		@vite(['resources/css/bootstrap.min.css', 'resources/js/fontawesome-6.4.0.js'])
 
 		<title>{{ $page->meta_title }}</title>
 
