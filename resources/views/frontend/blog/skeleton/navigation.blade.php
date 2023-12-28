@@ -61,15 +61,13 @@
 		    </div>
 		    <div class="navbar navbar-dark bg-dark shadow-sm">
 			    <div class="container">
-			    	@if($setting->title && $setting->logo)
 				    <a href="{{ route('blog.home') }}" class="navbar-brand d-flex align-items-center">
-					    <img src="{{ asset('blog/image/setting/' . $setting['logo']) }}" width="20" height="20" alt="{{ $setting->logo_alt_text }}">
-				    </a>
-				    @elseif($setting->title)
-				    <a href="{{ route('blog.home') }}" class="navbar-brand d-flex align-items-center">
-					    <strong>{{ $setting->title }}</strong>
-				    </a>
-				    @endif
+			    	@if($setting->title && !$setting->logo)
+				    <img src="{{ asset('blog/image/setting/' . $setting['logo']) }}" width="20" height="20" alt="{{ $setting->logo_alt_text }}">
+			        @else
+				    <strong>{{ $setting->title }}</strong>
+			        @endif
+					</a>
 				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
 				    <span class="navbar-toggler-icon"></span>
 				    </button>

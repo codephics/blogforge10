@@ -24,7 +24,7 @@
 					<img src="{{ asset('blog/image/featured/' . $blog->featured_image) }}" alt="" class="img-fluid mt-3" />
 
 					<article class="blog-post">
-						<p class="blog-post-meta mt-3">{{ $blog->created_at->format('M d, Y') }} by <b>{{ $blog->seller_name }}</b></p>
+						<p class="blog-post-meta mt-3">{{ $blog->created_at->format('M d, Y') }} by <b>{{ $blog->author }}</b></p>
 						{!! $blog->long_description !!}
 					</article>
 				</div>
