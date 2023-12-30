@@ -206,7 +206,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="featured_image" class="form-label">Featured Image</label>
-                            <img src="{{ asset('template/blog/image/featured/' . $blog->featured_image) }}" class="img-thumbnail" alt="..." />
+                            <img src="{{ asset('blog/image/featured/' . $blog->featured_image) }}" class="img-thumbnail" alt="..." />
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="featured_img_alt_text" value="{{ $blog->featured_img_alt_text }}" placeholder="Alt Text" />
@@ -217,7 +217,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="og_image" class="form-label">OG</label>
-                            <img src="{{ asset('template/blog/image/og/' . $blog->og_image) }}" class="img-thumbnail" alt="..." />
+                            <img src="{{ asset('blog/image/og/' . $blog->og_image) }}" class="img-thumbnail" alt="..." />
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="og_img_alt_text" value="{{ $blog->og_img_alt_text }}" placeholder="Alt Text" />
