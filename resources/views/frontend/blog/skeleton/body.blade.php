@@ -11,10 +11,7 @@
 
 		<title>{{ $page->meta_title }}</title>
 
-		<link rel="favicon" sizes="48x48" href="{{ asset('blog/image/setting/' . $setting->favicon) }}" />
-		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('blog/image/setting/' . $setting->favicon_apple) }}" />
-		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('blog/image/setting/' . $setting->favicon_32) }}" />
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('blog/image/setting/' . $setting->favicon_16) }}" />
+		<link rel="icon" sizes="48x48" href="{{ asset('blog/image/setting/' . $setting->favicon) }}" />
 
 		<!-- Custom Head -->
 		@yield('custom-head')
