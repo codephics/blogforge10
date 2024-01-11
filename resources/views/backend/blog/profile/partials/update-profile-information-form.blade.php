@@ -37,7 +37,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <x-primary-button type="submit" class="btn btn-primary">Save</x-primary-button>
+                <x-primary-button type="submit" class="btn btn-primary" disabled>Save</x-primary-button>
 
                 @if (session('status') === 'profile-updated')
                     <p

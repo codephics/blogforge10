@@ -250,9 +250,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <button type="submit" class="btn btn-primary">Publish</button>
-                <button type="submit" class="btn btn-primary">Draft</button>
-                <button type="submit" class="btn btn-secondary">Publish & Add Another</button>
+                <button type="submit" class="btn btn-primary" disabled>Publish</button>
             </div>
         </div>
     </form>
